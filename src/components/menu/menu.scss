@@ -1,0 +1,41 @@
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+
+    @media screen and (min-width: 420px){
+      max-width: 420px;
+    }
+
+    @include xl {
+      max-width: 100%;
+    }
+  }
+
+  &__item {
+    color: inherit;
+    margin-left: 0;
+    font-size: 20px;
+    font-family: CormorantGaramond-Bold;
+
+    @include xl {
+      margin-left: 50px;
+      font-size: 24px;
+    }
+  }
+
+  &__mobile-menu {
+    display: none;
+  }
+
+}
+
+
+

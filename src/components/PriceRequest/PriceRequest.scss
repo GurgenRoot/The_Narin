@@ -1,0 +1,199 @@
+@import "src/media";
+
+.page-bg {
+  align-items: flex-start;
+  z-index: 999999;
+    @include xl {
+      align-items: center;
+    }
+  .price-request {
+    background-color: #fff;
+    padding: 30px 16px;
+    position: absolute;
+
+    @include xl {
+      padding: 30px;
+    }
+    &__title {
+      font-size: 20px;
+
+      &--mobile {
+        font-size: 20px;
+      }
+
+    }
+
+    &__close {
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        margin: 0 auto;
+      }
+
+      &--btn {
+        cursor: pointer;
+      }
+    }
+
+    &__content {
+      display: flex;
+      justify-content: center;
+      max-width: 100%;
+      margin: 20px 0 40px 0;
+
+      @include lg {
+        display: block;
+        margin: 30px 0 40px 0;
+      }
+
+      &--mobile {
+        @include lg {
+          display: flex;
+
+        }
+      }
+    }
+
+    &__img {
+      max-width: 389px;
+      min-height: 308px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-bottom: 20px;
+
+      @include lg {
+        min-width: 389px;
+        min-height: 386px;
+        margin-right: 30px;
+        margin-bottom: 0;
+      }
+    }
+
+    &__info {
+      margin: 16px 0 12px 0;
+    }
+
+
+    &__cost {
+      margin-bottom: 30px;
+    }
+
+    &__form {
+
+      &--country {
+        margin-top: 16px;
+
+        @include xl {
+          margin-top: 0;
+        }
+      }
+      &--title {
+        font-size: 18px;
+      }
+      &--wrap {
+        @include lg {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      &--title {
+        text-align: left;
+        margin-bottom: 20px;
+
+        @include lg {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+      }
+
+      &--description {
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        color: #070707;
+        font-size: 16px;
+        margin-bottom: 20px;
+
+        @include lg {
+          text-align: center;
+        }
+
+      }
+
+      &--btn {
+        display: flex;
+
+        @include lg {
+          justify-content: center;
+        }
+      }
+
+      &--inputs {
+        color: #070707;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+
+        @include lg {
+          width: 388px;
+        }
+      }
+
+      &--input {
+        min-width: 100%;
+        margin-top: 10px;
+        height: 51px;
+        border: 1px solid #DBDBDB;
+        font-size: 16px;
+        padding-left: 14px;
+        color: #070707;
+        opacity: .5;
+        @include lg {
+          margin-top: 12px;
+        }
+      }
+
+      &--email {
+        margin-right: 0;
+        @include xl {
+          margin-right: 16px;
+        }
+      }
+
+    }
+
+    &__packaging {
+      margin-bottom: 12px;
+
+      &--title {
+        margin-bottom: 16px;
+        font-size: 18px;
+      }
+
+      &--btn {
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+    }
+
+    &__textarea {
+      margin: 16px 0 20px 0;
+      min-height: 102px;
+
+      @include xl {
+        margin: 20px 0 16px 0;
+      }
+    }
+
+    &__btn {
+      min-width: 222px;
+
+      @include xl {
+        min-width: 242px;
+      }
+    }
+  }
+
+}
+

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Hammer from "react-hammerjs";
+import './headerSlider.scss'
 
 //components
 import {HeaderSliderArrow} from "./headerSliderArrow";

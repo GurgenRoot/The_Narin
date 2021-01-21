@@ -1,6 +1,6 @@
 import React from 'react';
 import closeBtn from "../../../assets/whiteCloseBtn.svg";
-import {RadioBtn} from "../../../components/radio-btn/radioBtn";
+import {RadioBtn} from "../../../components/RadioBtn/RadioBtn";
 
 export const ProductPagePackaging = ({packagingBoxes}) => {
     return (
@@ -34,7 +34,7 @@ export const ProductPagePackaging = ({packagingBoxes}) => {
             <div className='product-page__packaging--footer'>
                 <div className='description product-page__packaging--info'>All packages includes the product story color print</div>
                 <button className='product-page__packaging--btn' onClick={() => {
-                }}>Show the example</button>
+                }}>Show example</button>
 
 
             </div>

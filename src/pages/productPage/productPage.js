@@ -1,14 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import './productPage.scss'
 import {Header} from "../../components/header/header";
-import {ProductPageSlider} from "../../components/product_page_slider/productPageSlider";
+import {ProductPageSlider} from "../../components/ProductPageSlider/ProductPageSlider";
 import {ProductPageInformation} from "./product_page_content/productPageInformation";
 import {ProductPageIntroduction} from "./product_page_content/productPageIntroduction";
 import {ProductPagePackaging} from "./product_page_content/productPagePackaging";
 import {ProductBuyInfo} from "./product_page_content/productBuyInfo";
-import {Footer} from "../../components/footer/footer";
-import {PriceRequest} from "../../components/price_request/priceRequest";
+import {Footer} from "../../components/Footer/Footer";
+import {PriceRequest} from "../../components/PriceRequest/PriceRequest";
 
 export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite}) => {
+
+    useEffect( () => {
+        window.scrollTo({top: 0})
+    },[])
 
     const [priceRequestToggle, setPriceRequestToggle] = useState(false)
 

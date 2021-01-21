@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
+import './headerMenu.scss';
 import mobileBlackSmallLogo from '../../assets/blackSmallLogo.svg';
 import mobileWhiteSmallLogo from '../../assets/narinSmallLogo.svg';
 import desktopWhiteLogo from '../../assets/logo-slogan.svg';
 import desktopBlackLogo from '../../assets/logo-slogan-black.svg'
-import {MenuLinks} from "../menu/menuLinks";
+import {MenuLinks} from "../MenuLinks/MenuLinks";
 import {HeaderMenuLogo} from "./headerMenuLogos";
-import {BurgerMenu} from "../burger_menu/burgerMenu";
+import {BurgerMenu} from "../BurgerMenu/BurgerMenu";
 import {NavLink} from "react-router-dom";
 
 export const HeaderMenu = ({isLogoWhite, setIsLogoWhite}) => {
+    console.log(isLogoWhite,'isLogoWhite2')
 
     const [burgerMenuToggle, setBurgerMenuToggle] = useState(true)
 

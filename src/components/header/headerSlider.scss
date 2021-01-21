@@ -1,9 +1,12 @@
+@import "src/media";
+
 .header-slider {
   height: 670px;
   background: #3f3f3f;
-
   @include xl {
     height: 970px;
+    max-height: 100vh;
+
   }
 
   &__item {

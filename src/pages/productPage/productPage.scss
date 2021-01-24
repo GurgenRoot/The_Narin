@@ -41,6 +41,7 @@
 
   &__slide {
     width: 100%;
+    background-color: #808080;
 
     &--item {
       height: 373px;
@@ -48,7 +49,8 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-
+      position: relative;
+      z-index: -1;
 
       @include lg {
         height: 480px;

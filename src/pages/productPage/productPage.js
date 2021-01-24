@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './productPage.scss'
-import {Header} from "../../components/header/header";
+import {Header} from "../../components/Header/Header";
 import {ProductPageSlider} from "../../components/ProductPageSlider/ProductPageSlider";
 import {ProductPageInformation} from "./product_page_content/productPageInformation";
 import {ProductPageIntroduction} from "./product_page_content/productPageIntroduction";
@@ -38,11 +38,11 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
         }
     ])
     return (
-        <>
+        <div className='container'>
             <Header isLogoWhite={false} setIsLogoWhite={setIsLogoWhite}/>
             <div className='product-page'>
                 <div className="product-page__top">
-                    <ProductPageSlider/>
+                    <ProductPageSlider />
                     <ProductPageInformation
                         setPriceRequestToggle={setPriceRequestToggle}
                         backgroundPageScrollOff={backgroundPageScrollOff}
@@ -65,6 +65,6 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
                     packagingBoxes={packagingBoxes}
                 />
             }
-        </>
+        </div>
     )
 }

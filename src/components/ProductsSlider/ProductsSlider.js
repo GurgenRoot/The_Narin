@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
 import Hammer from "react-hammerjs";
-import './ProductsSlider.scss';
 import rightArrow from '../../assets/Mini Imgs/right-arrow.svg'
 import leftArrow from '../../assets/Mini Imgs/left-arrow.svg'
 import {NavLink} from "react-router-dom";
-import {ProductsSliderArrow} from "./ProductsSliderArrow";
-
-
-export const ProductSlider = ({collection, theSeasonCollection}) => {
-    const sliderLength = theSeasonCollection.length
+import './ProductsSlider.scss'
+export const ProductSlider = ({collections}) => {
+    console.log(collections, 'colect')
+    const sliderLength = 11
     const deviceScreenWidth = window.screen.width
     const [translateX, setTranslateX] = useState(0)
     const [mr, setMr] = useState(0)
@@ -17,11 +15,14 @@ export const ProductSlider = ({collection, theSeasonCollection}) => {
     const [isSliderLengthOver, setIsSliderLengthOver] = useState(false)
     const [mobileSliderLength, setMobileSliderLength] = useState(1)
     const [currentItemId, setCurrentItemId] = useState(0)
-
-    console.log(collection, 'collection')
     const handleSwipeLeft = (isSliderLengthOver) => {
         if (isSliderLengthOver || mobileSliderLength > sliderLength - 1) {
-
+            if (deviceScreenWidth > 1375) {
+                setTranslateX(() => 0)
+                setMr(() => 0)
+                setIsSliderLengthOver(false)
+                setSliderLengthValue(id + 1)
+            }
             if (deviceScreenWidth > 991) {
                 setTranslateX(() => 0)
                 setIsSliderLengthOver(false)
@@ -72,17 +73,13 @@ export const ProductSlider = ({collection, theSeasonCollection}) => {
     const [currentTargetItemId, setCurrentTargetItemId] = useState(null)
 
     return (
-        <>
+        <div className='product-slider'>
             {
-                collection.map(collection => {
+                collections.map(i => {
                     return(
-                        <div className='product-slider' key={collection.id}>
-                            <h1 className='title'>
-                                <div className='product-slider__title'>{collection.sliderTitle}</div>
-                            </h1>
-                            <div className='description'>
-                                <div className="product-slider__name">Season {collection.seasonName}</div>
-                            </div>
+                        <>
+                            <h1 className='title product-slider__title'>{i.sliderTitle}</h1>
+                            <div className='description product-slider__name'>Season {i.seasonName}</div>
                             <div className='product-slider__wrapper'>
                                 <div className='product-slider__arrow'>
                                     <div className="product-slider__arrow--left">
@@ -126,7 +123,7 @@ export const ProductSlider = ({collection, theSeasonCollection}) => {
                                     </div>
 
                                 </div>
-                                {collection.sliderItems.map(item => {
+                                {i.sliderItems.map(item => {
                                     return (
                                         <Hammer onTap={handleTap} onSwipeLeft={() => {
                                             const itemId = item.id + 1
@@ -141,30 +138,22 @@ export const ProductSlider = ({collection, theSeasonCollection}) => {
                                                     handleSwipeRight()
                                                 }} key={item.id}>
                                             <div className="product-slider__item">
-                                                <NavLink to={`/product-item/${collection.id - 1}/${collection.url}/${item.id}`}
-                                                         aria-label={collection.id}>
+                                                <NavLink to={`/product-item/${collections.id - 1}/${collections.url}/${item.id}`}
+                                                         aria-label={collections.id}>
                                                     <div style={{transform: `translateX(calc(${translateX}% - ${mr}px)`}}
                                                          className='product-slider__content'
                                                          id={item.id}
-                                                         onMouseEnter={(e) => {
-                                                             const currentElementId = +e.currentTarget.id
-                                                             imageChangeHandler()
-                                                             return setCurrentTargetItemId(() => currentElementId)
-                                                             // укоротить этот код
-                                                         }}
-                                                         onMouseLeave={(e) => {
-                                                             const currentElementId = +e.currentTarget.id
-                                                             imageChangeHandler()
-                                                             return setCurrentTargetItemId(() => currentElementId)
-
-                                                             // short this code
-                                                         }}
                                                     >
                                                         <img
-                                                            src={imageChange && item.id === currentTargetItemId ? item.img[1] : item.img[0]}
-                                                            alt="bags" className='product-slider__item--img'/>
+                                                            src={item.img[0]}
+                                                            alt="bags" className='product-slider__item--img product-slider__item--firstImg'
+                                                        />
+                                                        <img
+                                                            src={item.img[1]}
+                                                            alt="bags" className='product-slider__item--img product-slider__item--secondImg'
+                                                        />
                                                         <div className='description'>
-                                                            <div className='product-slider__description'>{item.name}{item.id}</div>
+                                                            <div className='product-slider__item--description'>{item.name}{item.id}</div>
                                                         </div>
                                                     </div>
                                                 </NavLink>
@@ -173,10 +162,10 @@ export const ProductSlider = ({collection, theSeasonCollection}) => {
                                     )
                                 })}
                             </div>
-                        </div>
+                        </>
                     )
                 })
             }
-        </>
+        </div>
     )
 }

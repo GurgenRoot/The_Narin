@@ -1,0 +1,68 @@
+@import "src/media";
+
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 9;
+  width: 100%;
+  max-width: 1314px;
+  padding: 16px;
+  min-height: 124px;
+
+  @include xl {
+    padding: 20px 16px;
+  }
+
+  @include xxl {
+    padding: 20px 0;
+  }
+  
+  &__bg{
+    &--transparent {
+      background: transparent;
+    }
+    
+    &--white {
+      background: #fff;
+    }
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &__burger {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    @include xl {
+      display: none;
+    }
+
+    &--links{
+      position: absolute;
+      top: 82px;
+      right: 0;
+      left: 0;
+      font-size: 20px;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 16px;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @include xl {
+      display: flex;
+
+    }
+  }
+}

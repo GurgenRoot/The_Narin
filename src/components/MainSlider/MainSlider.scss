@@ -1,25 +1,57 @@
 @import "src/media";
 
-.header-slider {
+.main-slider {
   height: 670px;
   background: #3f3f3f;
+
   @include xl {
     height: 970px;
     max-height: 100vh;
 
   }
 
-  &__item {
-    height: inherit;
-    min-width: 100%;
-    display: none;
+  &__img{
+    position: absolute;
+    max-height: 100%;
+    width: 100%;
   }
 
+  &__item {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: absolute;
+
+    &--img {
+      position: absolute;
+      width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__opacity1 {
+    opacity: 1;
+    width: 100%;
+    transition: 1.5s ease;
+  }
+
+  &__opacity0 {
+    opacity: 0;
+    width: 100%;
+    transition: 1.5s ease;
+  }
   &__arrows {
     display: flex;
+    width: 100%;
+    max-width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9999;
     padding: 0 30px;
+    height: 100%;
     justify-content: space-between;
-    height: inherit;
     align-items: center;
 
     &--item {
@@ -51,11 +83,14 @@
   }
 
   &__dots {
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
     margin: 0 auto;
     display: flex;
     max-width: 210px;
     bottom: 30px;
+    z-index: 999999;
   }
 
   &__dot {
@@ -79,7 +114,11 @@
   }
 
   &__animations {
-    animation: visible-anim 1s linear 1 forwards;
+    animation: visible-anim 1.2s ease-in 1 forwards;
+  }
+
+  &__hideAnimations {
+    animation: hide-anim 1s ease-in-out 1 forwards;
   }
 
   @keyframes visible-anim {
@@ -90,4 +129,16 @@
       opacity: 1;
     }
   }
+
+  @keyframes hide-anim {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
 }
+
+

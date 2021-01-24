@@ -18,6 +18,24 @@
       cursor: pointer;
       height: inherit;
 
+      img {
+        padding: 22px;
+      }
     }
   }
+
+.prod-slide-animation {
+  animation: show-anim 1s linear 1 forwards;
+}
+
+@keyframes show-anim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 

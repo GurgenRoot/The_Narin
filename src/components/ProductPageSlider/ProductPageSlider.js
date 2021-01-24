@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import Hammer from "react-hammerjs";
 import './ProductPageSlider.scss'
-
 import LeftArrow from '../../assets/left-arrow.svg'
 import RightArrow from '../../assets/right-arrow.svg'
 
@@ -40,8 +39,7 @@ export const ProductPageSlider = () => {
                     return (
                         <div onClick={() => setId(item.index)}
                              key={item.index}
-                             style={{
-                                 backgroundColor: `${item.color}`, transition: '1s'}}
+                             style={{backgroundColor: `${item.color}`}}
                              className='product-page__slides--images'
                         >
                         </div>
@@ -54,9 +52,10 @@ export const ProductPageSlider = () => {
                     return (
                         <Hammer onSwipeLeft={() => swipeSliderRightHandler()}
                                 onSwipeRight={() => swipeSliderLeftHandler()} key={i.index}>
-                            <div className='product-page__slide--item' style={id === i.index ? {
+                            <div className='product-page__slide--item prod-slide-animation' style={id === i.index ? {
                                 zIndex: '9',
-                                backgroundColor: `${i.color}`
+                                backgroundColor: `${i.color}`,
+                                display: "block",
                             } : {display: 'none'}}>
                                 <div className='product-page__slider--arrows'>
                                     <img

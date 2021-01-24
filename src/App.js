@@ -32,7 +32,6 @@ export const App = () => {
         }, 1000)
     }
 
-    return useMemo(() => {
         return (
             <BrowserRouter>
                 <div className="container">
@@ -62,6 +61,5 @@ export const App = () => {
                 </div>
             </BrowserRouter>
         );
-    }, [])
 }
 

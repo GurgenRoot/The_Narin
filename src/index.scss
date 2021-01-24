@@ -4,6 +4,11 @@
 @import "fonts/font";
 @import "imports";
 
+.container {
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .description {
   font-size: 16px;
   color: $text-color;

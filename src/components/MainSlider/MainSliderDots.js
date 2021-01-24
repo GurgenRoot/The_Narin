@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const HeaderSliderDots = ({sliderImages, currentImageId, setCurrentImageId, setTimerToggle}) => {
+export const MainSliderDots = ({sliderImages, currentImageId, setCurrentImageId, setTimerToggle}) => {
     return (
         <>
-            <ul className="header-slider__dots">
+            <ul className="main-slider__dots">
                 {sliderImages.map(i => <li
                     className={i.id === currentImageId
-                        ? "header-slider__dot header-slider__dot--active"
-                        : "header-slider__dot"
+                        ? "main-slider__dot main-slider__dot--active"
+                        : "main-slider__dot"
                     }
                     key={i.id}
                     onClick={() => {

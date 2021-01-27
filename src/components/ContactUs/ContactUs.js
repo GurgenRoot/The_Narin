@@ -3,7 +3,7 @@ import './ContactUs.scss';
 import Facebook from '../../assets/facebook.svg';
 import Instagram from '../../assets/instagram.svg';
 
-export const ContactUs = ({setContactToggle}) => {
+export const ContactUs = ({setContactToggle, backgroundPageScrollOff}) => {
     return(
         <section className='contact-us'>
             <h1 className="title">CONTACT US</h1>
@@ -15,6 +15,7 @@ export const ContactUs = ({setContactToggle}) => {
             </div>
             <button className="btn contact-us__btn" onClick={() => {
                 setContactToggle(true)
+                backgroundPageScrollOff()
             }}>Contact us</button>
         </section>
     )

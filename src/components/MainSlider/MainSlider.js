@@ -5,7 +5,6 @@ import './MainSlider.scss'
 //components
 import {MainSliderArrow} from "./MainSliderArrow";
 import {MainSliderDots} from "./MainSliderDots";
-
 //images
 import Img1 from '../../assets/photo_2020-07-11_01-19-25.jpg';
 import Img2 from '../../assets/photo_2020-07-11_01-19-30.jpg';
@@ -20,9 +19,10 @@ export const MainSlider = React.memo(() => {
             {id: 2, img: Img3},
             {id: 3, img: Img4}
         ]
+
         const [currentImageId, setCurrentImageId] = useState(0)
 
-    const [opacity, setOpacity] = useState(['main-slider__hideAnimations', 'main-slider__animations'])
+        const [opacity, setOpacity] = useState(['main-slider__hideAnimations', 'main-slider__animations'])
 
         const [imageInTimerId, setImageInTimerId] = useState(0)
 
@@ -37,7 +37,7 @@ export const MainSlider = React.memo(() => {
             console.log(currentImageId)
             if (currentImageId + 2 > sliderImages.length) {
                 return setCurrentImageId(0)
-            }else return setCurrentImageId(currentImageId + 1 )
+            } else return setCurrentImageId(currentImageId + 1)
         }
 
         const prevSlide = () => {
@@ -59,15 +59,18 @@ export const MainSlider = React.memo(() => {
         return (
             <div className='main-slider'>
                 {sliderImages.map(i => {
-                    return(
+                    return (
                         <Hammer
                             onSwipeLeft={() => nextSlide(i.id)}
                             onSwipeRight={() => prevSlide(i.id)}
                             key={i.id}
                         >
                             <div>
-                                <img src={i.img} alt="slider img" className={cn('main-slider__img', currentImageId === i.id ? opacity[1] : opacity[0])}/>
-                                <MainSliderArrow nextSlide={nextSlide} prevSlide={prevSlide} setTimerToggle={setTimerToggle}/>
+                                <div style={{backgroundImage: `url(${i.img})`}}
+                                     className={cn('main-slider__img', currentImageId === i.id ? opacity[1] : opacity[0])}
+                                />
+                                <MainSliderArrow nextSlide={nextSlide} prevSlide={prevSlide}
+                                                 setTimerToggle={setTimerToggle}/>
                                 <MainSliderDots
                                     sliderImages={sliderImages}
                                     currentImageId={currentImageId}
@@ -82,5 +85,3 @@ export const MainSlider = React.memo(() => {
         )
     }
 )
-
-

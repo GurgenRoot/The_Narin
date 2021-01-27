@@ -1,52 +1,44 @@
-import React, {useState} from 'react';
-import './About.scss'
-import {AboutContent} from "./AboutContent";
+import React, {useState} from "react";
+import {aboutData} from './AboutData';
+import './About.scss';
+import cn from 'classnames';
 
 export const About = () => {
-
-    const [content, setContent ] = useState([
-        {
-            id: 1,
-            title: 'ABOUT US',
-            visibleText: `Our ancestors were master woodworkers and leatherworkers of late XIX - early XX centuries. The
-                        grandfather of one of the founders of our organization - Garibyan Grigor, at the beginning of the XX
-                        century lived with his family and worked in the city of Van. By 1920, Grigor returned to Armenia
-                        with his family, where he actively gathered pieces of the fragmented culture of Armenian art with
-                        his friends, intellectuals such as Ler Kamsar and others. Thanks to them, dozens of the rarest books
-                        and museum paintings are preserved in our private archives, which are the foundation of our
-                        inspiration, the results of which we show in the design of our bags.`,
-            hideText: `Our first works were presented
-                        in 2016 on the Armenian market, but we soon began to receive orders from our compatriots from
-                        abroad
-                        - particularly from the USA and Russia. We were very pleased with the presence of such an
-                        interest
-                        in our products. We especially liked and were encouraged by the fact that our customers
-                        understood
-                        that they were not buying another piece of luxury, but an object of art, with a rich history,
-                        behind
-                        which there are many peoples and great dynasties.`
-        },
-        {
-            id: 2,
-            title: 'OUR WORKS',
-            visibleText: `he origin of our work is rooted in the days of Western Armenia. By inheriting the craft of our
-                        great-grandfathers and their work ethic, we intend to reproduce a touch of history in every product
-                        we create. Some are inspired by ancient Armenia’s history, and others are based on the works of the
-                        greatest artists. Our goal is to show to art lovers the unique pages of Armenian culture that were
-                        lost at different periods or unfairly forgotten.We deeply believe that social values are based on
-                        the culture and the way it has been cherished and carefully preserved for hundreds of years.`,
-            hideText: `We aim to remind the greatness and the significance attributed to art for centuries behind us.
-                        Each piece
-                        combines a deep ideology, tradition, and stories of people from different historical periods.
-                        For
-                        this purpose, we divided our products into three categories: Patterns, Lands, and Geniuses.`
-        }
-    ])
-
+    const userDeviceScreenSize = window.screen.width
+    const [currentTargetBlock, setCurrentTargetBlock] = useState([])
 
     return (
         <section className='about'>
-            <AboutContent content={content}/>
+            {
+                aboutData.map(i => {
+                    return (
+                        <div className={cn('about__content', {about__top: i.id === 1})} key={i.id}>
+                            <h1 className='title about__content--title'>{i.title}</h1>
+                            <div className='description'>
+                                <div className='about__content--text'>{i.visibleText}</div>
+                            </div>
+                            <div className={
+                                cn('about__read-more',
+                                    {about__hideText: userDeviceScreenSize > 960 && !currentTargetBlock.some(currentTargetId => currentTargetId === i.id)},
+                                    {about__hideText: currentTargetBlock.some(currentTargetId => currentTargetId === i.id)},
+                                )}
+                                 id={i.id}
+                                 onClick={(e) => {
+                                     setCurrentTargetBlock(currentTargetBlock => [...currentTargetBlock, i.id])
+                                 }}>
+                                Read More...
+                            </div>
+                            <div className={
+                                cn('description',
+                                    {about__hideText: userDeviceScreenSize < 960 && !currentTargetBlock.some(currentTargetId => currentTargetId === i.id)})
+                            }>
+                                <div className='about__content--text'>{i.hideText}</div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </section>
-    )
-}
+    );
+};
+

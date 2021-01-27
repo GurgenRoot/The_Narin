@@ -197,3 +197,29 @@
 
 }
 
+
+@media screen and (max-height: 900px) {
+  .page-bg {
+    .price-request {
+      margin: 16px auto;
+      padding: 20px;
+
+      &__img {
+        max-width: 389px;
+        min-height: 308px;
+        margin-bottom: 0;
+      }
+
+      &__content {
+        margin: 20px 0;
+      }
+
+      &__form {
+
+        &--title {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

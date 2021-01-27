@@ -4,14 +4,14 @@ import {Textarea} from "../Textarea/Textarea";
 import {ThankYouPopUp} from "../ThankYouPopup/ThankYouPopUp";
 import './ContactPopup.scss'
 
-export const ContactPopup = ({setContactToggle}) => {
+export const ContactPopup = ({setContactToggle, backgroundPageScrollOn}) => {
 
     const [thankYouPopUpToggle, setThankYouPopUpToggle] = useState(false)
     return (
         <div className='page-bg'>
             {
                 thankYouPopUpToggle
-                    ? <ThankYouPopUp setContactToggle={setContactToggle}/>
+                    ? <ThankYouPopUp setContactToggle={setContactToggle} backgroundPageScrollOn={backgroundPageScrollOn}/>
                     : <section className='contacting-component'>
                         <div className='title contacting-component__header'>
                             <div className="contacting-component__title">
@@ -21,6 +21,7 @@ export const ContactPopup = ({setContactToggle}) => {
                                 <img src={closeImg} alt="close"
                                      onClick={() => {
                                          setContactToggle(false)
+                                         backgroundPageScrollOn()
                                      }}
                                 />
                             </div>

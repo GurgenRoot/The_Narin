@@ -2,7 +2,7 @@ import React from 'react';
 import './ThankYouPopUp.scss';
 import closeImg from '../../assets/close.svg';
 
-export const ThankYouPopUp = ({setContactToggle}) => {
+export const ThankYouPopUp = ({setContactToggle, backgroundPageScrollOn}) => {
     return (
         <div>
             <div className='thanks-popup'>
@@ -10,6 +10,7 @@ export const ThankYouPopUp = ({setContactToggle}) => {
                     <h1 className='thanks-popup__title'>THANK YOU!</h1>
                     <img src={closeImg} alt="close" className='thanks-popup__close' onClick={() => {
                         setContactToggle(false)
+                        backgroundPageScrollOn()
                     }}/>
                 </div>
                 <div className='description'>

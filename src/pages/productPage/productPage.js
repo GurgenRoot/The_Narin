@@ -8,18 +8,23 @@ import {ProductPagePackaging} from "./product_page_content/productPagePackaging"
 import {ProductBuyInfo} from "./product_page_content/productBuyInfo";
 import {Footer} from "../../components/Footer/Footer";
 import {PriceRequest} from "../../components/PriceRequest/PriceRequest";
+import {ExamplePhotoToggle} from "./product_page_content/ExamplePhotoToggle";
 
 export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite}) => {
 
     useEffect( () => {
         window.scrollTo({top: 0})
+        backgroundPageScrollOn()
     },[])
+
+    const [examplePhotoToggle, setExamplePhotoToggle] = useState(false)
 
     const [priceRequestToggle, setPriceRequestToggle] = useState(false)
 
     const [packagingBoxes, setPackagingBoxes] = useState([
         {
             id: 1,
+            selected: true,
             title: 'Standard',
             description: 'Elegant, high-quality, and eco-friendly box with durable magnets on the lid that provide a tight and safe seal, securing your bag inside.',
             videoSrc: "https://www.youtube.com/embed/08EgUyjSy7E"
@@ -38,26 +43,33 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
         }
     ])
     return (
-        <div className='container'>
-            <Header isLogoWhite={false} setIsLogoWhite={setIsLogoWhite}/>
-            <div className='product-page'>
-                <div className="product-page__top">
-                    <ProductPageSlider />
-                    <ProductPageInformation
-                        setPriceRequestToggle={setPriceRequestToggle}
-                        backgroundPageScrollOff={backgroundPageScrollOff}
-                    />
+        <>
+            <div className='container'>
+                <Header isLogoWhite={false} setIsLogoWhite={setIsLogoWhite}/>
+                <div className='product-page'>
+                    <div className="product-page__top">
+                        <ProductPageSlider />
+                        <ProductPageInformation
+                            setPriceRequestToggle={setPriceRequestToggle}
+                            priceRequestToggle={priceRequestToggle}
+                            backgroundPageScrollOff={backgroundPageScrollOff}
+                        />
+                    </div>
+                    <ProductPageIntroduction/>
+                    <ProductPagePackaging packagingBoxes={packagingBoxes} setExamplePhotoToggle={setExamplePhotoToggle}/>
+                    <div className="product-page__buy--wrap">
+                        <ProductBuyInfo
+                            setPriceRequestToggle={setPriceRequestToggle}
+                            backgroundPageScrollOff={backgroundPageScrollOff}
+                        />
+                    </div>
+                    <Footer/>
                 </div>
-                <ProductPageIntroduction/>
-                <ProductPagePackaging packagingBoxes={packagingBoxes}/>
-                <div className="product-page__buy--wrap">
-                    <ProductBuyInfo
-                        setPriceRequestToggle={setPriceRequestToggle}
-                        backgroundPageScrollOff={backgroundPageScrollOff}
-                    />
-                </div>
-                <Footer/>
+
             </div>
+            {
+                examplePhotoToggle && <ExamplePhotoToggle setExamplePhotoToggle={setExamplePhotoToggle} />
+            }
             {
                 priceRequestToggle && <PriceRequest
                     backgroundPageScrollOn={backgroundPageScrollOn}
@@ -65,6 +77,6 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
                     packagingBoxes={packagingBoxes}
                 />
             }
-        </div>
+        </>
     )
 }

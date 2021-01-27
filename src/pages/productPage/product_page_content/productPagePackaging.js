@@ -2,7 +2,7 @@ import React from 'react';
 import closeBtn from "../../../assets/whiteCloseBtn.svg";
 import {RadioBtn} from "../../../components/RadioBtn/RadioBtn";
 
-export const ProductPagePackaging = ({packagingBoxes}) => {
+export const ProductPagePackaging = ({packagingBoxes, setExamplePhotoToggle}) => {
     return (
         <div className='product-page__packaging'>
             <h1 className='title'>
@@ -17,7 +17,7 @@ export const ProductPagePackaging = ({packagingBoxes}) => {
                             <div key={i.id}>
                                 <div className='product-page__packaging--item'>
                                     <div className='description product-page__radio'>
-                                        <RadioBtn title={i.title}/>
+                                        <RadioBtn title={i.title} selected={i.selected}/>
                                     </div>
                                     <div className='description'>
                                         <div className='product-page__packaging--description'>{i.description}</div>
@@ -34,6 +34,7 @@ export const ProductPagePackaging = ({packagingBoxes}) => {
             <div className='product-page__packaging--footer'>
                 <div className='description product-page__packaging--info'>All packages includes the product story color print</div>
                 <button className='product-page__packaging--btn' onClick={() => {
+                    setExamplePhotoToggle(true)
                 }}>Show example</button>
 
 
@@ -41,22 +42,3 @@ export const ProductPagePackaging = ({packagingBoxes}) => {
         </div>
     );
 };
-
-// {
-//     woodenBoxHide
-//         ? <div
-//             className='wooden-box-img'
-//             onClick={(e) => {
-//             }}
-//         >
-//             <img src={closeBtn} alt="close" className='close' onClick={() => {
-//             }}/>
-//             <div>
-//                 <img src={woodenBox} alt="img" className='img' onClick={(e) => {
-//                     e.stopPropagation()
-//                     e.preventDefault()
-//                 }}/>
-//             </div>
-//         </div>
-//         : null
-// }

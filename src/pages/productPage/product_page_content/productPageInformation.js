@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import facebook from "../../../assets/facebook.svg";
 import instagram from "../../../assets/instagram.svg";
 
-export const ProductPageInformation = ({setPriceRequestToggle, backgroundPageScrollOff}) => {
+export const ProductPageInformation = ({setPriceRequestToggle, priceRequestToggle, backgroundPageScrollOff}) => {
 
     const [productInformation, setProductInformation] = useState([
         {id: 1, description: 'Product weight', descriptionValue: '1kg'},
@@ -12,6 +12,8 @@ export const ProductPageInformation = ({setPriceRequestToggle, backgroundPageScr
         {id: 5, description: 'Min. stripe length', descriptionValue: '20cm'},
         {id: 6, description: 'Max. stripe length', descriptionValue: '30cm'}
     ])
+
+
     return(
         <section className='product-page__information'>
             <div>
@@ -44,7 +46,7 @@ export const ProductPageInformation = ({setPriceRequestToggle, backgroundPageScr
                 }
             </div>
             <button className='btn product-page__information--btn' onClick={() => {
-                setPriceRequestToggle(true)
+                setPriceRequestToggle(() => true)
                 backgroundPageScrollOff()
             }}>Request the price</button>
             <div className='product-page__social'>

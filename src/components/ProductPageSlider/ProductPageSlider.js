@@ -3,15 +3,20 @@ import Hammer from "react-hammerjs";
 import './ProductPageSlider.scss'
 import LeftArrow from '../../assets/left-arrow.svg'
 import RightArrow from '../../assets/right-arrow.svg'
+import img1 from "../../assets/ARMENIAN GENIUSES/arams-ballet-1.png";
+import img2 from "../../assets/ARMENIAN GENIUSES/komitas-1.png";
+import img3 from "../../assets/ARMENIAN GENIUSES/vardapets-signature-1.png";
+import img4 from "../../assets/ARMENIAN GENIUSES/arams-ballet-1.png";
+import img5 from "../../assets/ARMENIAN GENIUSES/komitas-1.png";
 
 export const ProductPageSlider = () => {
     const [id, setId] = useState(0)
     const t = [
-        {index: 0, color: '#e4e4e4'},
-        {index: 1, color: 'skyBlue'},
-        {index: 2, color: 'pink'},
-        {index: 3, color: '#f8f8f8'},
-        {index: 4, color: 'orange'}
+        {id: 0, img: img1},
+        {id: 1, img: img2},
+        {id: 2, img: img3},
+        {id: 3, img: img4},
+        {id: 4, img: img5}
     ]
 
     const swipeSliderLeftHandler = () => {
@@ -37,9 +42,9 @@ export const ProductPageSlider = () => {
             <div className="product-page__slides">
                 {t.map(item => {
                     return (
-                        <div onClick={() => setId(item.index)}
-                             key={item.index}
-                             style={{backgroundColor: `${item.color}`}}
+                        <div onClick={() => setId(item.id)}
+                             key={item.id}
+                             style={{backgroundImage: `url(${item.img})`}}
                              className='product-page__slides--images'
                         >
                         </div>
@@ -50,33 +55,44 @@ export const ProductPageSlider = () => {
             <div className='product-page__slide'>
                 {t.map(i => {
                     return (
-                        <Hammer onSwipeLeft={() => swipeSliderRightHandler()}
-                                onSwipeRight={() => swipeSliderLeftHandler()} key={i.index}>
-                            <div className='product-page__slide--item prod-slide-animation' style={id === i.index ? {
-                                zIndex: '9',
-                                backgroundColor: `${i.color}`,
-                                display: "block",
-                            } : {display: 'none'}}>
-                                <div className='product-page__slider--arrows'>
-                                    <img
-                                        src={LeftArrow}
-                                        alt="Left Arrow"
-                                        onClick={() => swipeSliderLeftHandler()}
-                                    />
+                        <div>
+                            <Hammer onSwipeLeft={() => swipeSliderRightHandler()}
+                                    onSwipeRight={() => swipeSliderLeftHandler()} key={i.id}>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <div className='product-page__slide--item prod-slide-animation'
+                                                 style={id === i.id ? {
+                                                     zIndex: '9',
+                                                     display: 'block'
+                                                 } : {display: 'none'}}
+                                            >
 
-                                    <img
-                                        src={RightArrow}
-                                        alt="Right Arrow"
-                                        onClick={() => swipeSliderRightHandler()}
-                                    />
+                                            </div>
+
+                                            <div className='product-page__slider--arrows'>
+                                                <img
+                                                    src={LeftArrow}
+                                                    alt="Left Arrow"
+                                                    onClick={() => swipeSliderLeftHandler()}
+                                                />
+
+                                                <img
+                                                    src={RightArrow}
+                                                    alt="Right Arrow"
+                                                    onClick={() => swipeSliderRightHandler()}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </Hammer>
+                            </Hammer>
+                        </div>
                     )
                 })}
 
-            </div>
+                    </div>
 
-        </div>
-    )
-}
+                    </div>
+                    )
+                }

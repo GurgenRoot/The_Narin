@@ -41,7 +41,7 @@ export const PriceRequest = ({setPriceRequestToggle, packagingBoxes, backgroundP
 
                                         {packagingBoxes.map(i => {
                                             return (
-                                                <div className='price-request__packaging--btn'><RadioBtn title={i.title}/></div>
+                                                <div className='price-request__packaging--btn'><RadioBtn title={i.title} selected={i.selected}/></div>
                                             )
                                         })}
                                     </div>

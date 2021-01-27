@@ -1,3 +1,5 @@
+@import "src/media";
+
 .product-page {
   padding-top: 73px;
   max-width: 1314px;
@@ -39,14 +41,16 @@
 
   &__slide {
     width: 100%;
+    background-color: #808080;
 
     &--item {
       height: 373px;
-      border: 1px solid transparent;
+      border: 1px solid red;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-
+      position: relative;
+      z-index: -1;
 
       @include lg {
         height: 480px;
@@ -369,6 +373,32 @@
   &__iframe {
     width: 100%;
     height: inherit;
+  }
+
+  &__example {
+    height: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &--close {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      cursor: pointer;
+      width: 97%;
+
+      @include lg {
+        width: 94%;
+        margin: 0 auto;
+      }
+    }
+
+    &--img {
+      width: 100%;
+      box-shadow: 0 20px 30px #00000029;
+    }
   }
 }
 

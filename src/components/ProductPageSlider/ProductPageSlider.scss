@@ -1,0 +1,46 @@
+@import "src/media";
+
+
+  .product-page__slider {
+    display: flex;
+    width: 100%;
+    height: inherit;
+
+    img {
+      height: inherit;
+      border: 1px solid saddlebrown;
+    }
+    @include xl {
+      max-width: 884px;
+    }
+
+    &--arrows {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+      padding: 0 16px;
+      cursor: pointer;
+      height: inherit;
+
+      img {
+        padding: 22px;
+      }
+    }
+  }
+
+.prod-slide-animation {
+  animation: show-anim 1s linear 1 forwards;
+}
+
+@keyframes show-anim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+

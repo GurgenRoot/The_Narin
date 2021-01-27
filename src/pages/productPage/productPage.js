@@ -1,20 +1,30 @@
-import React, {useState} from "react";
-import {Header} from "../../components/header/header";
-import {ProductPageSlider} from "../../components/product_page_slider/productPageSlider";
+import React, {useEffect, useState} from "react";
+import './productPage.scss'
+import {Header} from "../../components/Header/Header";
+import {ProductPageSlider} from "../../components/ProductPageSlider/ProductPageSlider";
 import {ProductPageInformation} from "./product_page_content/productPageInformation";
 import {ProductPageIntroduction} from "./product_page_content/productPageIntroduction";
 import {ProductPagePackaging} from "./product_page_content/productPagePackaging";
 import {ProductBuyInfo} from "./product_page_content/productBuyInfo";
-import {Footer} from "../../components/footer/footer";
-import {PriceRequest} from "../../components/price_request/priceRequest";
+import {Footer} from "../../components/Footer/Footer";
+import {PriceRequest} from "../../components/PriceRequest/PriceRequest";
+import {ExamplePhotoToggle} from "./product_page_content/ExamplePhotoToggle";
 
 export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite}) => {
+
+    useEffect( () => {
+        window.scrollTo({top: 0})
+        backgroundPageScrollOn()
+    },[])
+
+    const [examplePhotoToggle, setExamplePhotoToggle] = useState(false)
 
     const [priceRequestToggle, setPriceRequestToggle] = useState(false)
 
     const [packagingBoxes, setPackagingBoxes] = useState([
         {
             id: 1,
+            selected: true,
             title: 'Standard',
             description: 'Elegant, high-quality, and eco-friendly box with durable magnets on the lid that provide a tight and safe seal, securing your bag inside.',
             videoSrc: "https://www.youtube.com/embed/08EgUyjSy7E"
@@ -34,25 +44,32 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
     ])
     return (
         <>
-            <Header isLogoWhite={false} setIsLogoWhite={setIsLogoWhite}/>
-            <div className='product-page'>
-                <div className="product-page__top">
-                    <ProductPageSlider/>
-                    <ProductPageInformation
-                        setPriceRequestToggle={setPriceRequestToggle}
-                        backgroundPageScrollOff={backgroundPageScrollOff}
-                    />
+            <div className='container'>
+                <Header isLogoWhite={false} setIsLogoWhite={setIsLogoWhite}/>
+                <div className='product-page'>
+                    <div className="product-page__top">
+                        <ProductPageSlider />
+                        <ProductPageInformation
+                            setPriceRequestToggle={setPriceRequestToggle}
+                            priceRequestToggle={priceRequestToggle}
+                            backgroundPageScrollOff={backgroundPageScrollOff}
+                        />
+                    </div>
+                    <ProductPageIntroduction/>
+                    <ProductPagePackaging packagingBoxes={packagingBoxes} setExamplePhotoToggle={setExamplePhotoToggle}/>
+                    <div className="product-page__buy--wrap">
+                        <ProductBuyInfo
+                            setPriceRequestToggle={setPriceRequestToggle}
+                            backgroundPageScrollOff={backgroundPageScrollOff}
+                        />
+                    </div>
+                    <Footer/>
                 </div>
-                <ProductPageIntroduction/>
-                <ProductPagePackaging packagingBoxes={packagingBoxes}/>
-                <div className="product-page__buy--wrap">
-                    <ProductBuyInfo
-                        setPriceRequestToggle={setPriceRequestToggle}
-                        backgroundPageScrollOff={backgroundPageScrollOff}
-                    />
-                </div>
-                <Footer/>
+
             </div>
+            {
+                examplePhotoToggle && <ExamplePhotoToggle setExamplePhotoToggle={setExamplePhotoToggle} />
+            }
             {
                 priceRequestToggle && <PriceRequest
                     backgroundPageScrollOn={backgroundPageScrollOn}

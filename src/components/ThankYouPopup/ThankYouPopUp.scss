@@ -1,0 +1,54 @@
+@import "src/media";
+
+.thanks-popup {
+
+  min-height: 152px;
+  padding: 30px 16px 35px 16px;
+  background-color: #fff;
+  text-align: center;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    padding-left: 30px;
+
+  }
+
+  &__description {
+    margin-top: 20px;
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+
+}
+
+@media screen and (min-width: 643px) {
+
+  .thanks-popup {
+    padding: 60px 30px;
+    min-width: 643px;
+
+    &__title {
+      font-size: 24px;
+    }
+    &__close {
+      position: relative;
+      top: -30px;
+    }
+
+    &__description {
+      margin-top: 16px;
+    }
+  }
+
+}

@@ -1,0 +1,141 @@
+@import "src/media";
+
+.product-slider {
+  margin: 40px 0;
+
+  @include xl {
+    margin: 120px 0;
+  }
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__name {
+    text-align: center;
+    margin: 12px 0 20px 0;
+
+    @include xl {
+      font-size: 18px;
+      margin: 16px 0 30px 0;
+    }
+  }
+
+  &__description {
+    font-size: 16px;
+
+    @include xl {
+      font-size: 18px;
+    }
+  }
+
+  &__wrapper {
+    margin: 0 auto;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    display: flex;
+    overflow: hidden;
+
+    @include lg {
+      max-width: 991px;
+    }
+
+    @media screen and (min-width: 1375px){
+      max-width: 1376px;
+      padding: 0 32px;
+    }
+
+  }
+
+  &__content {
+    transition: 1s ease;
+    max-width: 100%;
+  }
+
+  &__arrow {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    width: 90%;
+    max-width: 1344px;
+    left: 5%;
+    height: 330px;
+    justify-content: space-between;
+
+
+    @include lg {
+      max-width: 1021px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+
+    @media screen and (min-width: 1375px){
+      max-width: 1375px;
+      height: 440px;
+    }
+    &--right, &--left {
+      position: relative;
+      display: flex;
+      z-index: 999;
+      cursor: pointer;
+
+      img {
+        padding: 22px;
+      }
+    }
+
+  }
+
+  &__item {
+    min-width: 100%;
+    min-height: 303px;
+    margin-right: 16px;
+    border: 1px solid transparent;
+
+    @media screen and (min-width: 375px){
+      min-width: 309px;
+      max-width: 100%;
+    }
+
+    @media screen and (min-width: 1375px){
+      min-width: 418px;
+      max-width: 418px;
+      margin-right: 30px;
+    }
+    &--img {
+      width: 100%;
+      height: 303px;
+      @media screen and (min-width: 1375px) {
+        height: 410px;
+        margin-bottom: 10px;
+      }
+    }
+
+    &--firstImg {
+      position: absolute;
+      opacity: 1;
+      transition: 1.3s ease;
+    }
+
+    &--secondImg {
+      position: relative;
+      opacity: 0;
+      transition: 1.3s ease;
+    }
+
+  }
+}
+
+
+.product-slider__item:hover {
+  .product-slider__item--firstImg {
+    opacity: 0;
+    transition: 1s ease;
+  }
+
+  .product-slider__item--secondImg {
+    opacity: 1;
+    transition: 1s ease;
+  }
+}

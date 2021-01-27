@@ -1,0 +1,53 @@
+@import "src/media";
+
+.radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__btn {
+    display: none;
+  }
+
+  &__clone{
+    display: inline-block;
+    min-width: 24px;
+    height: 24px;
+    border: 1px solid #707070;
+    background-color: #fff;
+    position: relative;
+    border-radius: 100%;
+    margin-right: 12px;
+
+    @include xl {
+      margin-right: 14px;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: '';
+      display: block;
+      width: 14px;
+      height: 14px;
+      background-color: #070707;
+      border-radius: 100%;
+      opacity: 0;
+      transition: .4s;
+    }
+  }
+
+  &__btn:checked + &__clone::before {
+    opacity: 1;
+  }
+
+  &__title {
+    font-family: Montserrat-Medium;
+
+    @include xl {
+      font-size: 18px;
+    }
+  }
+}

@@ -1,7 +1,9 @@
 import React, {useState} from "react";
-import {aboutData} from './AboutData';
-import './About.scss';
 import cn from 'classnames';
+
+import {aboutData} from './AboutData';
+
+import './About.scss';
 
 export const About = () => {
     const userDeviceScreenSize = window.screen.width

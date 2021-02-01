@@ -5,131 +5,22 @@
   max-width: 1314px;
   margin: 0 auto;
 
-  &__top {
-    display: flex;
-    flex-direction: column;
-    @include xl {
-      padding: 0 16px;
-      flex-direction: row;
-    }
-
-    @include xxl {
-      padding: 0;
-    }
-  }
-
   @include xl {
     padding-top: 134px;
   }
 
-  &__slides {
-    display: none;
-    flex-direction: column;
-    margin-right: 16px;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1314px;
 
-    @media screen and (min-width: 1140px) {
-      display: block;
+    @media screen and (max-width: 1314px){
+      margin: 0 16px;
     }
 
-    &--images {
-      min-width: 119px;
-      min-height: 120px;
-      margin-bottom: 16px;
+    @media screen and (max-width: 790px){
+      flex-direction: column;
     }
-  }
-
-
-  &__slide {
-    width: 100%;
-    background-color: #808080;
-
-    &--item {
-      height: 373px;
-      border: 1px solid red;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      position: relative;
-      z-index: -1;
-
-      @include lg {
-        height: 480px;
-        margin: 0 auto;
-        min-width: 100%;
-      }
-
-      @include xl {
-        height: 725px;
-        max-width: 731px;
-
-      }
-    }
-  }
-
-  &__information {
-    padding: 20px 16px 0 16px;
-    margin: 0 auto;
-
-    @include xl {
-      margin-top: -7px;
-      padding: 0 24px 0 30px;
-    }
-
-    @include xxl {
-      width: 612px;
-    }
-
-    &--title {
-      font-size: 20px;
-      margin: 20px 0 14px 0;
-
-      @include lg {
-        font-size: 24px;
-      }
-
-      @include xl {
-        margin: 20px 0 16px 0;
-      }
-    }
-
-    &--season {
-      margin: 14px 0 16px 0;
-
-      @include xl {
-        margin: 12px 0 16px 0;
-        font-size: 18px;
-      }
-    }
-
-    &--wrap {
-      display: flex;
-      justify-content: space-between;
-      max-width: 340px;
-    }
-
-    &--description {
-      margin-bottom: 14px;
-      font-family: Montserrat-Medium;
-      @include xl {
-        margin-bottom: 12px;
-      }
-    }
-
-    &--value {
-      min-width: 112px;
-      margin-left: 12px;
-    }
-
-    &--btn {
-      min-width: 222px;
-      margin: 16px 0 20px 0;
-
-      @include xl {
-        min-width: 240px;
-        margin: 18px 0 30px 0;
-      }
-    }
-
   }
 
   &__introduction {
@@ -320,8 +211,8 @@
     &--wrap {
       padding: 0 16px;
 
-      @include xl {
-        padding: 0;
+      @include xxl {
+        padding: 0 ;
       }
     }
     &--description {

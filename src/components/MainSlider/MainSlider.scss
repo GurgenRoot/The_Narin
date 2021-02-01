@@ -3,12 +3,18 @@
 .main-slider {
   height: 670px;
   background: #3f3f3f;
+  position: relative;
+  z-index: 1;
 
 
   @include xl {
     height: 970px;
     max-height: 100vh;
 
+  }
+
+  &__item {
+    position: relative;
   }
 
   &__img{

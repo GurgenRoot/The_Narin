@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import './productPage.scss'
 import {Header} from "../../components/Header/Header";
 import {ProductPageSlider} from "../../components/ProductPageSlider/ProductPageSlider";
-import {ProductPageInformation} from "./product_page_content/productPageInformation";
+import {ProductPageInformation} from "./product_page_content/ProductPageInformation/productPageInformation";
 import {ProductPageIntroduction} from "./product_page_content/productPageIntroduction";
 import {ProductPagePackaging} from "./product_page_content/productPagePackaging";
 import {ProductBuyInfo} from "./product_page_content/productBuyInfo";
@@ -12,14 +12,15 @@ import {ExamplePhotoToggle} from "./product_page_content/ExamplePhotoToggle";
 
 export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite}) => {
 
-    useEffect( () => {
-        window.scrollTo({top: 0})
-        backgroundPageScrollOn()
-    },[])
-
     const [examplePhotoToggle, setExamplePhotoToggle] = useState(false)
 
     const [priceRequestToggle, setPriceRequestToggle] = useState(false)
+
+    useEffect( () => {
+        window.scrollTo({top: 0})
+        backgroundPageScrollOn();
+        return () => setPriceRequestToggle(false);
+    },[])
 
     const [packagingBoxes, setPackagingBoxes] = useState([
         {
@@ -47,7 +48,7 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
             <div className='container'>
                 <Header isLogoWhite={false} setIsLogoWhite={setIsLogoWhite}/>
                 <div className='product-page'>
-                    <div className="product-page__top">
+                    <div className='product-page__top'>
                         <ProductPageSlider />
                         <ProductPageInformation
                             setPriceRequestToggle={setPriceRequestToggle}
@@ -56,7 +57,11 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
                         />
                     </div>
                     <ProductPageIntroduction/>
-                    <ProductPagePackaging packagingBoxes={packagingBoxes} setExamplePhotoToggle={setExamplePhotoToggle}/>
+                    <ProductPagePackaging
+                      packagingBoxes={packagingBoxes}
+                      setExamplePhotoToggle={setExamplePhotoToggle}
+                      backgroundPageScrollOff={backgroundPageScrollOff}
+                    />
                     <div className="product-page__buy--wrap">
                         <ProductBuyInfo
                             setPriceRequestToggle={setPriceRequestToggle}
@@ -68,7 +73,10 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
 
             </div>
             {
-                examplePhotoToggle && <ExamplePhotoToggle setExamplePhotoToggle={setExamplePhotoToggle} />
+                examplePhotoToggle && <ExamplePhotoToggle
+                  backgroundPageScrollOn={backgroundPageScrollOn}
+                  setExamplePhotoToggle={setExamplePhotoToggle}
+                />
             }
             {
                 priceRequestToggle && <PriceRequest

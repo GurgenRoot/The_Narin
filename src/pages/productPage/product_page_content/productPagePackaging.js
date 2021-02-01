@@ -2,7 +2,7 @@ import React from 'react';
 import closeBtn from "../../../assets/whiteCloseBtn.svg";
 import {RadioBtn} from "../../../components/RadioBtn/RadioBtn";
 
-export const ProductPagePackaging = ({packagingBoxes, setExamplePhotoToggle}) => {
+export const ProductPagePackaging = ({packagingBoxes, setExamplePhotoToggle, backgroundPageScrollOff}) => {
     return (
         <div className='product-page__packaging'>
             <h1 className='title'>
@@ -34,6 +34,7 @@ export const ProductPagePackaging = ({packagingBoxes, setExamplePhotoToggle}) =>
             <div className='product-page__packaging--footer'>
                 <div className='description product-page__packaging--info'>All packages includes the product story color print</div>
                 <button className='product-page__packaging--btn' onClick={() => {
+                    backgroundPageScrollOff()
                     setExamplePhotoToggle(true)
                 }}>Show example</button>
 

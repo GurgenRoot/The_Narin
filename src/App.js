@@ -1,14 +1,34 @@
-import React, {useMemo, Suspense, useState} from "react";
+import React, {Suspense, useState, useEffect} from "react";
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import {HomePage} from "./pages/HomePage/HomePage";
 import Preloader from './assets/preloader.svg';
 import {ProductPage} from "./pages/productPage/productPage";
-import {ImagesMagnifiers} from "./components/ImagesMagnifiers/ImagesMagnifiers";
 
 export const App = () => {
+ const [userDeviceScreenSize, setUserDeviceScreenSize] = useState(window.screen.width)
+    
+ const setUserDeviceScreenSizeHandler = () => {
+
+    return userDeviceScreenSize
+ }
+ console.log(userDeviceScreenSize)
+ useEffect(() => {
+    const onResizeHandler = () => {
+        setUserDeviceScreenSize(window.screen.width)
+    } 
+    window.addEventListener('resize', onResizeHandler )
+    
+    return () => window.removeEventListener('resize', onResizeHandler)
+ }, [])
+    // console.log(setUserDeviceScreenSizeHandler(), 'screen')
+
+   
 
     const [isLogoWhite, setIsLogoWhite] = useState(true)
     const scrollOff = () => {
+        const html = document.querySelector('html')
+        html.style.scrollBehavior = 'unset'
+            console.log(html)
         const yPosition = window.pageYOffset
         window.onscroll = () => {
             window.scrollTo(0, yPosition)
@@ -23,9 +43,12 @@ export const App = () => {
 
     const backgroundPageScrollOff = () => {
         window.addEventListener('click', scrollOff)
+        console.log('scroll off')
     }
 
     const backgroundPageScrollOn = () => {
+        const html = document.querySelector('html')
+        html.style.scrollBehavior = 'smooth'
         window.removeEventListener('click', scrollOff)
         window.addEventListener('click', scrollOn)
         setTimeout(() => {
@@ -47,7 +70,6 @@ export const App = () => {
                                 />
                             )
                         }}/>
-                        <Route path='/about' render={() => <ImagesMagnifiers/>}/>
                         <Route path='/product-item/:carouselId/:carouselUrl/:sliderItemId' render={() => {
                             return (
                                 <Suspense fallback={() => <img src={Preloader} alt="...Loading"/>}>

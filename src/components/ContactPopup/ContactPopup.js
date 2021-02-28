@@ -8,7 +8,7 @@ export const ContactPopup = ({setContactToggle, backgroundPageScrollOn}) => {
 
     const [thankYouPopUpToggle, setThankYouPopUpToggle] = useState(false)
     return (
-        <div className='page-bg'>
+            <div className='page-bg'>
             {
                 thankYouPopUpToggle
                     ? <ThankYouPopUp setContactToggle={setContactToggle} backgroundPageScrollOn={backgroundPageScrollOn}/>
@@ -47,6 +47,5 @@ export const ContactPopup = ({setContactToggle, backgroundPageScrollOn}) => {
                     </section>
             }
         </div>
-
     )
 }

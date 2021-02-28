@@ -4,7 +4,6 @@ import closeImg from '../../assets/close.svg';
 
 export const ThankYouPopUp = ({setContactToggle, backgroundPageScrollOn}) => {
     return (
-        <div>
             <div className='thanks-popup'>
                 <div className='title thanks-popup__header'>
                     <h1 className='thanks-popup__title'>THANK YOU!</h1>
@@ -17,7 +16,6 @@ export const ThankYouPopUp = ({setContactToggle, backgroundPageScrollOn}) => {
                     <div className='thanks-popup__description'>We heard you and will get back to you very soon.</div>
                 </div>
             </div>
-        </div>
     );
 };
 

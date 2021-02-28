@@ -1,23 +1,21 @@
 import React from 'react';
-import './Menu.scss'
-import {NavLink} from "react-router-dom";
+import './Menu.scss';
 
 export const MenuLinks = ({isLogoWhite}) => {
+    
     return (
         <div className='menu'>
             <nav className="menu__items" style={isLogoWhite ? {color: '#fff'} : {color: '#070707'}}>
                 <a
-                    href='/about'
+                    href='/#about'
                     className="menu__item"
-
-                    onClick={() => console.log()}
                     target={!isLogoWhite ? "_blank" : "_self"}
                 >
                     About us
                 </a>
 
                 <a
-                    href='/our-works'
+                    href='/#our-works'
                     className="menu__item"
                     target={!isLogoWhite ? "_blank" : "_self"}
                 >
@@ -25,7 +23,7 @@ export const MenuLinks = ({isLogoWhite}) => {
                 </a>
 
                 <a
-                    href='/contact-us'
+                    href='/#contact-us'
                     className="menu__item"
                     target={!isLogoWhite ? "_blank" : "_self"}
                 >

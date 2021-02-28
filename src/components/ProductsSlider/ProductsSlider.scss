@@ -21,6 +21,12 @@
     }
   }
 
+  &__wrap {
+    display: flex;
+    transition: 1s all ease;
+
+  }
+
   &__description {
     font-size: 16px;
 
@@ -41,7 +47,7 @@
     }
 
     @media screen and (min-width: 1375px){
-      max-width: 1376px;
+      max-width: 1373px;
       padding: 0 32px;
     }
 
@@ -79,20 +85,24 @@
       display: flex;
       z-index: 999;
       cursor: pointer;
+      justify-content: flex-end;
 
       img {
-        padding: 22px;
       }
     }
+    &--left {
+      padding: 20px 22px 20px 0;
+    }
 
+    &--right {
+      padding: 20px 0 20px 22px                                                                   ;
+    }
   }
 
   &__item {
     min-width: 100%;
     min-height: 303px;
     margin-right: 16px;
-    border: 1px solid transparent;
-
     @media screen and (min-width: 375px){
       min-width: 309px;
       max-width: 100%;

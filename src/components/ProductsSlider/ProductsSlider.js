@@ -1,104 +1,66 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Hammer from "react-hammerjs";
 import rightArrow from '../../assets/Mini Imgs/right-arrow.svg'
 import leftArrow from '../../assets/Mini Imgs/left-arrow.svg'
 import {NavLink} from "react-router-dom";
 import './ProductsSlider.scss'
 export const ProductSlider = ({collections}) => {
-    console.log(collections, 'colect')
-    const sliderLength = 11
+
+    console.log(collections, 'collections')
     const deviceScreenWidth = window.screen.width
-    const [translateX, setTranslateX] = useState(0)
+    const [translateX, setTranslateX] = useState(() => 0)
     const [mr, setMr] = useState(0)
-    const id = Math.floor(sliderLength / 3)
-    const [sliderLengthValue, setSliderLengthValue] = useState(() => id)
-    const [isSliderLengthOver, setIsSliderLengthOver] = useState(false)
-    const [mobileSliderLength, setMobileSliderLength] = useState(1)
-    const [currentItemId, setCurrentItemId] = useState(0)
-    const handleSwipeLeft = (isSliderLengthOver) => {
-        if (isSliderLengthOver || mobileSliderLength > sliderLength - 1) {
-            if (deviceScreenWidth > 1375) {
-                setTranslateX(() => 0)
-                setMr(() => 0)
-                setIsSliderLengthOver(false)
-                setSliderLengthValue(id + 1)
-            }
-            if (deviceScreenWidth > 991) {
-                setTranslateX(() => 0)
-                setIsSliderLengthOver(false)
-                setSliderLengthValue(id + 1)
-                setMr(() => 0)
-            }
-            if (deviceScreenWidth < 991) {
-                setTranslateX(() => 0)
-                setMr(() => 0)
-                setMobileSliderLength(() => 1)
-            }
+    const id = deviceScreenWidth > 991 ? Math.floor(11 / 3) * 10 : Math.floor(11 / 11) * 10
+    
+    const sliderImages = collections.map(i => i.sliderItems)[0]
+
+    const handleSwipeLeft = () => {
+        if(deviceScreenWidth > 1300) {
+            if (translateX > 60) return
+            setTranslateX((prevState) => prevState + id)
+            setMr(() => mr + 132) 
+        }else if (deviceScreenWidth > 991) {
+            if (translateX > 60) return
+            setTranslateX((prevState) => prevState + id)
+            setMr(() => mr + 97)
         } else {
-            if (deviceScreenWidth > 1375) {
-                setTranslateX(() => translateX - 300)
-                setMr(() => mr + 97)
-            } else if (deviceScreenWidth > 991) {
-                setTranslateX(() => translateX - 300)
-                setMr(() => mr + 54)
-            } else {
-                setTranslateX(() => translateX - 100)
-                setMr(() => mr + 18)
-            }
+              if (translateX > 90) return
+              setTranslateX((prevState) => prevState + id)
+              setMr(() => mr + 32) 
         }
-
-        // укоротить этот код
     }
+
     const handleSwipeRight = () => {
-        if (translateX + 1 <= 0) {
-            if (deviceScreenWidth > 1375) {
-                setTranslateX(() => translateX + 300)
+            if (translateX <= 0) return
+
+            if(deviceScreenWidth > 1300) {
+                setTranslateX((prevState) => prevState - id)
+                setMr(() => mr - 132) 
+            }else if (deviceScreenWidth > 991) {
+                setTranslateX((prevState) => prevState - id)
                 setMr(() => mr - 97)
-            } else if (deviceScreenWidth > 991) {
-                setTranslateX(() => translateX + 300)
-                setMr(() => mr - 54)
             } else {
-                setTranslateX(() => translateX + 100)
-                setMr(() => mr - 18)
+                setTranslateX((prevState) => prevState - id)
+                setMr(() => mr - 32) 
             }
-        } else return
-
-        // short this code
     }
-
-    let handleTap
-
-    const imageChangeHandler = () => setImageChange(() => !imageChange)
-    const [imageChange, setImageChange] = useState(false)
-    const [currentTargetItemId, setCurrentTargetItemId] = useState(null)
 
     return (
         <div className='product-slider'>
             {
                 collections.map(i => {
                     return(
-                        <>
+                        <div key={i.id}>
                             <h1 className='title product-slider__title'>{i.sliderTitle}</h1>
                             <div className='description product-slider__name'>Season {i.seasonName}</div>
                             <div className='product-slider__wrapper'>
                                 <div className='product-slider__arrow'>
                                     <div className="product-slider__arrow--left">
-                                        {translateX < 0
+                                        {translateX > 0
                                             ? <img
                                                 src={leftArrow} alt="left arrow"
                                                 onClick={ (event) => {
-                                                    if (translateX + 1 <= 0) {
-                                                        setSliderLengthValue(sliderLengthValue - id)
-                                                        const isSliderLengthOver = sliderLengthValue > sliderLength && deviceScreenWidth > 991
-                                                        setIsSliderLengthOver(isSliderLengthOver)
-                                                        const isDesktopDevice = deviceScreenWidth > 991
-                                                        setMobileSliderLength(() => {
-                                                            if (isDesktopDevice === false) {
-                                                                return  mobileSliderLength - 1
-                                                            } else return mobileSliderLength
-                                                        })
-                                                        handleSwipeRight()
-                                                    } else return
+                                                    handleSwipeRight()
                                                 }}
                                             />
                                             : null
@@ -108,39 +70,26 @@ export const ProductSlider = ({collections}) => {
                                         <img
                                             src={rightArrow} alt="right arrow"
                                             onClick={(event) => {
-                                                setSliderLengthValue(sliderLengthValue + id)
-                                                const isDesktopDevice = deviceScreenWidth > 991
-                                                const isSliderLengthOver = sliderLength < sliderLengthValue && isDesktopDevice
-                                                setIsSliderLengthOver(isSliderLengthOver)
-                                                setMobileSliderLength(() => {
-                                                    if (isDesktopDevice === false) {
-                                                        return  mobileSliderLength + 1
-                                                    } else return mobileSliderLength
-                                                })
-                                                handleSwipeLeft(isSliderLengthOver)
+                                                handleSwipeLeft()
                                             }}
                                         />
                                     </div>
 
                                 </div>
-                                {i.sliderItems.map(item => {
+                                <div className="product-slider__wrap" style={{transform: `translateX(calc(${-translateX}% + ${mr}px))`}}>
+                                {sliderImages.map(item => {
                                     return (
-                                        <Hammer onTap={handleTap} onSwipeLeft={() => {
-                                            const itemId = item.id + 1
-                                            setCurrentItemId(() => itemId)
-                                            setMobileSliderLength(() => itemId)
+                                        <Hammer onSwipeLeft={() => {
                                             handleSwipeLeft()
                                         }}
                                                 onSwipeRight={() => {
-                                                    const itemId = item.id - 1
-                                                    setCurrentItemId(() => itemId)
-                                                    setMobileSliderLength(() => itemId)
                                                     handleSwipeRight()
                                                 }} key={item.id}>
                                             <div className="product-slider__item">
+                                                
                                                 <NavLink to={`/product-item/${collections.id - 1}/${collections.url}/${item.id}`}
                                                          aria-label={collections.id}>
-                                                    <div style={{transform: `translateX(calc(${translateX}% - ${mr}px)`}}
+                                                    <div style={{transform: `translateX(0%`}}
                                                          className='product-slider__content'
                                                          id={item.id}
                                                     >
@@ -157,15 +106,17 @@ export const ProductSlider = ({collections}) => {
                                                         </div>
                                                     </div>
                                                 </NavLink>
+                                                
                                             </div>
                                         </Hammer>
                                     )
                                 })}
+                                </div>
                             </div>
-                        </>
+                        </div>
                     )
                 })
             }
         </div>
     )
-}
+};

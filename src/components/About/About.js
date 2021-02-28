@@ -14,7 +14,7 @@ export const About = () => {
             {
                 aboutData.map(i => {
                     return (
-                        <div className={cn('about__content', {about__top: i.id === 1})} key={i.id}>
+                        <div className={cn('about__content', {about__top: i.id === 1})} key={i.id} id={i.title === 'ABOUT US' ? 'about' : 'our-works'}>
                             <h1 className='title about__content--title'>{i.title}</h1>
                             <div className='description'>
                                 <div className='about__content--text'>{i.visibleText}</div>

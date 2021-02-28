@@ -6,6 +6,7 @@
   padding: 30px 16px;
   text-align: center;
   width: 100%;
+  margin: 0 auto;
 
   &__header {
     display: flex;
@@ -71,7 +72,7 @@
   }
 }
 
-@include lg {
+@media screen and (min-width: 643px) {
 
   .contacting-component {
     padding: 30px;

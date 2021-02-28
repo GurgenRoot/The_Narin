@@ -5,7 +5,7 @@ import Instagram from '../../assets/instagram.svg';
 
 export const ContactUs = ({setContactToggle, backgroundPageScrollOff}) => {
     return(
-        <section className='contact-us'>
+        <section className='contact-us' id="contact-us">
             <h1 className="title">CONTACT US</h1>
             <div className="description contact-us__description">We are always happy hearing from you. Feel free to contact us at info@narinbags.com </div>
             <div className='contact-us__social'>

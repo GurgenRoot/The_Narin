@@ -1,16 +1,16 @@
-@import "src/media";
+@import "src/styles/media";
 
-.page-bg {
-  align-items: flex-start;
-  z-index: 999999;
-    @include xl {
-      align-items: center;
-    }
+.price-bg {
+  justify-content: end;
+  @include lg {
+    justify-content: center;
+
+  }
+   
   .price-request {
     background-color: #fff;
-    padding: 30px 16px;
-    position: absolute;
 
+    padding: 30px 16px;
     @include xl {
       padding: 30px;
     }
@@ -194,16 +194,15 @@
       }
     }
   }
-
 }
+
 
 
 @media screen and (max-height: 900px) {
   .page-bg {
+  
     .price-request {
-      margin: 16px auto;
-      padding: 20px;
-
+      overflow: scroll;
       &__img {
         max-width: 389px;
         min-height: 308px;

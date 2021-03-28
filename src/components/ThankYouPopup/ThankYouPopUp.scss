@@ -1,13 +1,13 @@
-@import "src/media";
+@import "src/styles/media";
 
 .thanks-popup {
-
+  width: 100%;
   min-height: 152px;
   padding: 30px 16px 35px 16px;
   background-color: #fff;
   text-align: center;
-  width: 100%;
-
+  margin: 0 auto;
+  
   &__header {
     display: flex;
     justify-content: space-between;
@@ -36,7 +36,7 @@
 
   .thanks-popup {
     padding: 60px 30px;
-    min-width: 643px;
+    max-width: 643px;
 
     &__title {
       font-size: 24px;

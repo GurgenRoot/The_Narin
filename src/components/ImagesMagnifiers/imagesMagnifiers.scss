@@ -1,0 +1,53 @@
+@import "src/styles/media";
+
+.imagesMagnifiers {
+  display: flex;
+
+  &__small {
+    min-width: 100%;
+    img {
+
+      @include xl {
+        min-height: 725px;
+      }
+    }
+  }
+
+  &__active {
+    opacity: 1;
+    display: block;
+    transition: 1s all ease;
+  }
+
+  &__not {
+    opacity: 0;
+    display: block;
+    transition: 1s all ease;
+  }
+
+  &__zoom {
+    min-width: 65%;
+    /*min-height: 300px;*/
+    left: 3px;
+  }
+
+  &__animation {
+    animation: anim 1.2s ease-in 1 forwards;
+  }
+}
+
+
+  .imagesMagnifiers__small {
+
+  }
+@keyframes anim {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}

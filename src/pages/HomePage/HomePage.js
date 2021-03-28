@@ -6,7 +6,7 @@ import ContactUs from "../../components/ContactUs";
 import Footer from "../../components/Footer";
 import ContactPopup from "../../components/ContactPopup";
 import MainSlider from "../../components/MainSlider";
-import { PortaledComponent } from '../../components/portaledComponent/portaledComponent';
+import PortaledComponent from '../../components/PortaledComponent';
 import ProductSlider from "../../components/ProductsSlider";
 
 import Img1 from "../../assets/photo_2020-07-11_01-19-25.jpg";
@@ -53,7 +53,7 @@ export const HomePage = (
             {
                 collections.map(collection => {
                     return (
-                        <ProductSlider collection={collection} userDeviceScreenSize={userDeviceScreenSize}/>
+                        <ProductSlider key={collection.id} collection={collection} userDeviceScreenSize={userDeviceScreenSize}/>
                     )
                 })
             }

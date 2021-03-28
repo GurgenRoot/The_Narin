@@ -1,5 +1,5 @@
 import React, {Suspense, useState, useEffect} from "react";
-import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {HomePage} from "./pages/HomePage/HomePage";
 import Preloader from './assets/preloader.svg';
 import {ProductPage} from "./pages/productPage/productPage";

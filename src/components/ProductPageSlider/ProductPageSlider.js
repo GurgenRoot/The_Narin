@@ -1,5 +1,5 @@
 import { ProductPageDesktopSlider } from '../ProductPageDesktopSlider/ProductPageDesktopSlider';
-import ProductPageMobileSlider from '../productPageMobileSlider';
+import ProductPageMobileSlider from '../ProductPageMobileSlider';
 
 import './ProductPageSlider.scss';
 

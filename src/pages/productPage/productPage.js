@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import React, {useEffect, useState} from "./node_modules/react";
+import { useParams } from "./node_modules/react-router-dom";
 
 import {Header} from "../../components/Header/Header";
 import {ProductPageSlider} from "../../components/ProductPageSlider/ProductPageSlider";
@@ -38,7 +38,7 @@ const packagingBoxes = [
     }
 ];
 
-export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite, userDeviceScreenSize}) => {
+const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite, userDeviceScreenSize}) => {
     const [examplePhotoToggle, setExamplePhotoToggle] = useState(false);
     const [priceRequestToggle, setPriceRequestToggle] = useState(false);
     const [packagingType, setPackagingType] = useState(1);
@@ -132,3 +132,5 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
             </div>
     )
 }
+
+export default ProductPage;

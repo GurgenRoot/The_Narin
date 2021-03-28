@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './node_modules/react';
 import Facebook from "../../../assets/facebook.svg";
 import Instagram from "../../../assets/instagram.svg";
 

@@ -1,8 +1,10 @@
-import React, {Suspense, useState, useEffect} from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {HomePage} from "./pages/HomePage/HomePage";
+import React, { Suspense, useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import { HomePage } from "./pages/HomePage";
+import { ProductPage } from "./pages/ProductPage";
+
 import Preloader from './assets/preloader.svg';
-import {ProductPage} from "./pages/productPage/productPage";
 
 export const App = () => {
  const [userDeviceScreenSize, setUserDeviceScreenSize] = useState(window.screen.width)

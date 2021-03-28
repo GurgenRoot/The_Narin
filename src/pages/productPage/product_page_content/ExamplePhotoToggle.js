@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect} from './node_modules/react';
 
 import img from '../../../assets/NoPath — копия (15).jpeg';
 import close from '../../../assets/whiteCloseBtn.svg';

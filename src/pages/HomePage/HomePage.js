@@ -18,7 +18,7 @@ import './HomePage.scss'
 
 import {collections} from "../../data/colections";
 
-export const HomePage = (
+const HomePage = (
   { isLogoWhite,
     setIsLogoWhite,
     backgroundPageScrollOn,
@@ -67,5 +67,4 @@ export const HomePage = (
     )
 }
 
-
-
+export default HomePage;

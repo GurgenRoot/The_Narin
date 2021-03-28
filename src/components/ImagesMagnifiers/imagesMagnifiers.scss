@@ -1,12 +1,28 @@
+@import "src/media";
+
 .imagesMagnifiers {
   display: flex;
 
   &__small {
     min-width: 100%;
-    /*img {
-      // min-height: 725px;
+    img {
 
-    }*/
+      @include xl {
+        min-height: 725px;
+      }
+    }
+  }
+
+  &__active {
+    opacity: 1;
+    display: block;
+    transition: 1s all ease;
+  }
+
+  &__not {
+    opacity: 0;
+    display: block;
+    transition: 1s all ease;
   }
 
   &__zoom {
@@ -14,28 +30,24 @@
     /*min-height: 300px;*/
     left: 3px;
   }
+
+  &__animation {
+    animation: anim 1.2s ease-in 1 forwards;
+  }
 }
 
-@media screen and (max-width: 640px){
+
   .imagesMagnifiers__small {
-    img {
-      /*min-height: 422px;*/
-    }
-  }
-}
 
-.input-wrap {
-  max-width: 400px;
-  margin: 300px auto;
-  display: flex;
-  align-items: center;
-  border: 1px solid #222;
-
-  .input {
-    font-size: 18px;
-    padding: 5px;
-    width: 100%;
-    border: 1px solid #222;
-    border-radius: 8px;
   }
+@keyframes anim {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
 }

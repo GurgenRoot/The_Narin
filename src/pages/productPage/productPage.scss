@@ -9,6 +9,21 @@
     padding-top: 134px;
   }
 
+  &__radio {
+    @media screen and (min-width: 960px){
+      border: 1px solid #222;
+      min-height: 57px;
+      display: flex;
+    }
+
+    @media screen and (min-width: 1016px){
+      margin-bottom: 12px;
+      display: block;
+      border: none;
+      min-height: auto;
+    }
+  }
+
   &__top {
     display: flex;
     justify-content: space-between;
@@ -139,7 +154,7 @@
 
     &--description {
       color: #9E9E9E;
-      margin: 12px 0 14px 36px;
+      margin: 0 0 14px 36px;
 
       @include lg {
         max-width: 643px;
@@ -148,7 +163,7 @@
 
       @include xl {
         min-height: 120px;
-        margin: 12px 0 20px 36px;
+        margin: 0 0 20px 36px;
       }
 
       @include xxl {

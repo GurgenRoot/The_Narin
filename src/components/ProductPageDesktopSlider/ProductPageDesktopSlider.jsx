@@ -1,35 +1,69 @@
 import React from 'react';
-import {ImagesMagnifiers} from '../ImagesMagnifiers/ImagesMagnifiers';
 import Hammer from 'react-hammerjs';
+import classnames from 'classnames'
 
-export const ProductPageDesktopSlider = ({img, swipeSliderRightHandler, swipeSliderLeftHandler, img1}) => {
-    console.log(img1)
+import {ImagesMagnifiers} from '../ImagesMagnifiers/ImagesMagnifiers';
+
+import LeftArrow from '../../assets/left-arrow.svg';
+import RightArrow from '../../assets/right-arrow.svg';
+import Preloader from '../../assets/preloader.svg'
+
+export const ProductPageDesktopSlider = ({smallImages,largeImage,setImageId,imageId, setImageIdIncrementHandler, setImageIdDecrementHandler}) => {
     return (
         <>
             <div>
-               {img.map(img => {
+               {smallImages.map((img, index) => {
                   return (
                     <div
-                        key={img.id}
-                        style={{background: `url('${img.img}') no-repeat center center / cover`}}
-                        className='product-page-miniImages'
+                        key={index}
+                        style={{background: `url('/images/small/${img}') no-repeat center center / cover`}}
+                        className={classnames('product-page-miniImages', index === imageId && 'product-page-miniImages__active' )}
+                        onClick={() => setImageId(index)}
                     >
                     </div>
                   );
                 })
                 }
+
             </div>
             <div className='product-page-slider'>
               <div>
                 <Hammer
-                    onSwipeLeft={() => swipeSliderRightHandler()}
-                    onSwipeRight={() => swipeSliderLeftHandler()}
+                    onSwipeLeft={() => setImageIdIncrementHandler()}
+                    onSwipeRight={() => setImageIdDecrementHandler()}
                 >
-                <div>
-                    <ImagesMagnifiers img={img1} largeImg={img1}/>
-                </div>
+                    <div className='product-page__slider--curs'>
+                        {
+                          largeImage ?
+                            <div>
+                              <div className='product-page__slider--arrows'>
+                                <img
+                                  src={LeftArrow}
+                                  className='product-page__slider--left-arrow'
+                                  alt="Left Arrow"
+                                  onClick={() => setImageIdDecrementHandler()}
+                                />
+
+                                <img
+                                  className='product-page__slider--right-arrow'
+                                  src={RightArrow}
+                                  alt="Right Arrow"
+                                  onClick={() => setImageIdIncrementHandler()}
+                                />
+                              </div>
+                              <ImagesMagnifiers
+                                img={`/images/large/${largeImage}`}
+                                secondImg={`/images/large/${largeImage}`}
+                                largeImg={`/images/large/${largeImage}`}
+                                secondLargeImg={`/images/large/${largeImage}`}
+                                imageId={imageId}
+                              />
+                            </div>
+                            : <img src={Preloader} alt="preloader" className='preloader'/>
+                        }
+                    </div>
                 </Hammer>
-                </div>
+               </div>
             </div>
         </>
     );

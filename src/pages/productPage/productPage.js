@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
 
 import {Header} from "../../components/Header/Header";
 import {ProductPageSlider} from "../../components/ProductPageSlider/ProductPageSlider";
@@ -12,7 +13,9 @@ import {ExamplePhotoToggle} from "./product_page_content/ExamplePhotoToggle";
 import { PortaledComponent } from "../../components/portaledComponent/portaledComponent";
 
 import './productPage.scss'
-import { ProductPageMobileSlider } from "../../components/ProductPageMobileSlider/ProductPageMobileSlider";
+
+import products from '../../data/products'
+import {collections} from '../../data/colections'
 
 const packagingBoxes = [
     {
@@ -35,7 +38,7 @@ const packagingBoxes = [
     }
 ];
 
-export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite}) => {
+export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, setIsLogoWhite, userDeviceScreenSize}) => {
     const [examplePhotoToggle, setExamplePhotoToggle] = useState(false);
     const [priceRequestToggle, setPriceRequestToggle] = useState(false);
     const [packagingType, setPackagingType] = useState(1);
@@ -51,14 +54,45 @@ export const ProductPage = ({backgroundPageScrollOn, backgroundPageScrollOff, se
         return () => setPriceRequestToggle(false);
     },[])
 
+    const params = useParams()
+
+    const collection = collections.filter(url => url.url === params.carouselUrl)
+
+    const sliderId = collection[0].sliderItems[params.productId - 1].id
+
+    const [imageId, setImageId] = useState(0)
+
+    const setImageIdIncrementHandler = () => {
+        if(imageId >= products[sliderId].largeImages.length - 1) {
+              setImageId(0)  
+        }else setImageId(prevState => prevState + 1)
+    }
+
+    const setImageIdDecrementHandler = () => {
+        if(imageId <= 0) {
+              setImageId(products[sliderId].largeImages.length - 1)  
+        }else setImageId(prevState => prevState - 1)
+    }
+
+    const middleImage = products[sliderId].middleImages[imageId]
+
+    const largeImage = products[sliderId].middleImages[imageId]
+
     return (
             <div className='container'>
                 <Header isLogoWhite={false} setIsLogoWhite={setIsLogoWhite}/>
                 <div className='product-page'>
                     <div className='product-page__top'>
-                        {/*isMobile ? <ProductPageSliderMobile /> : <ProductPageSlider />*/}
-
-                        <ProductPageSlider/>                        
+                        <ProductPageSlider
+                            smallImages={products[sliderId].smallImages}
+                            middleImage={middleImage}
+                            largeImage={largeImage}
+                            setImageId={setImageId}
+                            imageId={imageId}
+                            userDeviceScreenSize={userDeviceScreenSize}
+                            setImageIdIncrementHandler={setImageIdIncrementHandler}
+                            setImageIdDecrementHandler={setImageIdDecrementHandler}
+                        />                        
                         <ProductPageInformation
                             setPriceRequestToggle={setPriceRequestToggle}
                             priceRequestToggle={priceRequestToggle}

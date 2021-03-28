@@ -6,8 +6,9 @@ import {Textarea} from "../Textarea/Textarea";
 import {RadioBtn} from "../RadioBtn/RadioBtn";
 
 export const PriceRequest = ({type, onChangeType, setPriceRequestToggle, packagingBoxes, backgroundPageScrollOn}) => (
-    <div className='page-bg'>
-        <div className='price-request'>
+    
+      <div className="page-bg price-bg">  
+      <div className='price-request'>
             <h1 className='title'>
                 <div className='price-request__title align-center'>
                     <div className='price-request__close'>
@@ -82,6 +83,7 @@ export const PriceRequest = ({type, onChangeType, setPriceRequestToggle, packagi
                     </button>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>  
+        </div>  
+    
 );

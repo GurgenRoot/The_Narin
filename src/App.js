@@ -7,11 +7,6 @@ import {ProductPage} from "./pages/productPage/productPage";
 export const App = () => {
  const [userDeviceScreenSize, setUserDeviceScreenSize] = useState(window.screen.width)
     
- const setUserDeviceScreenSizeHandler = () => {
-
-    return userDeviceScreenSize
- }
- console.log(userDeviceScreenSize)
  useEffect(() => {
     const onResizeHandler = () => {
         setUserDeviceScreenSize(window.screen.width)
@@ -19,10 +14,7 @@ export const App = () => {
     window.addEventListener('resize', onResizeHandler )
     
     return () => window.removeEventListener('resize', onResizeHandler)
- }, [])
-    // console.log(setUserDeviceScreenSizeHandler(), 'screen')
-
-   
+ }, [])   
 
     const [isLogoWhite, setIsLogoWhite] = useState(true)
     const scrollOff = () => {
@@ -67,15 +59,17 @@ export const App = () => {
                                     setIsLogoWhite={setIsLogoWhite}
                                     backgroundPageScrollOn={backgroundPageScrollOn}
                                     backgroundPageScrollOff={backgroundPageScrollOff}
+                                    userDeviceScreenSize={userDeviceScreenSize}
                                 />
                             )
                         }}/>
-                        <Route path='/product-item/:carouselId/:carouselUrl/:sliderItemId' render={() => {
+                        <Route path='/:carouselUrl/:productId' render={() => {
                             return (
                                 <Suspense fallback={() => <img src={Preloader} alt="...Loading"/>}>
                                     <ProductPage
                                         backgroundPageScrollOn={backgroundPageScrollOn}
                                         backgroundPageScrollOff={backgroundPageScrollOff}
+                                        userDeviceScreenSize={userDeviceScreenSize}
                                         setIsLogoWhite={setIsLogoWhite}
                                     />
                                 </Suspense>

@@ -16,7 +16,7 @@ export const aboutData = [
     {
         id: 2,
         title: 'OUR WORKS',
-        visibleText: `he origin of our work is rooted in the days of Western Armenia. By inheriting the craft of our
+        visibleText: `The origin of our work is rooted in the days of Western Armenia. By inheriting the craft of our
                         great-grandfathers and their work ethic, we intend to reproduce a touch of history in every product
                         we create. Some are inspired by ancient Armenia’s history, and others are based on the works of the
                         greatest artists. Our goal is to show to art lovers the unique pages of Armenian culture that were

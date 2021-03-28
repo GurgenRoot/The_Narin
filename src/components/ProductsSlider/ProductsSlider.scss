@@ -56,6 +56,7 @@
   &__content {
     transition: 1s ease;
     max-width: 100%;
+    border: 1px solid transparent;
   }
 
   &__arrow {
@@ -100,9 +101,12 @@
   }
 
   &__item {
-    min-width: 100%;
+    min-width: 288px;
+    max-width: 100%;
     min-height: 303px;
     margin-right: 16px;
+    border: 1px solid transparent;
+
     @media screen and (min-width: 375px){
       min-width: 309px;
       max-width: 100%;
@@ -149,3 +153,10 @@
     transition: 1s ease;
   }
 }
+
+//.test {
+//  border: 2px solid saddlebrown;
+//  position: relative;
+//  left: 10%;
+//  margin: 0 auto;
+//}

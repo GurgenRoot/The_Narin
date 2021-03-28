@@ -16,11 +16,15 @@ import Img4 from "../../assets/photo_2020-07-11_01-19-37.jpg";
 
 import './HomePage.scss'
 
-import {collections} from "./HomePageData";
-import {seasons} from "./db.json";
+import {collections} from "../../data/colections";
 
-
-export const HomePage = ({isLogoWhite, setIsLogoWhite, backgroundPageScrollOn, backgroundPageScrollOff}) => {
+export const HomePage = (
+  { isLogoWhite,
+    setIsLogoWhite,
+    backgroundPageScrollOn,
+    backgroundPageScrollOff,
+    userDeviceScreenSize
+  }) => {
     const [timerToggle, setTimerToggle] = useState(true)
 
     useEffect( () => {
@@ -40,18 +44,20 @@ export const HomePage = ({isLogoWhite, setIsLogoWhite, backgroundPageScrollOn, b
 
     const [contactToggle, setContactToggle]  = useState(false)
 
-    const patterns = [collections[0]]
-    const lands = [collections[1]]
-    const geniuses = [collections[2]]
 
     return (
         <div className='home-page'>
             <Header isLogoWhite={isLogoWhite} setIsLogoWhite={setIsLogoWhite}/>
             <MainSlider sliderImages={sliderImages} timerToggle={timerToggle} setTimerToggle={setTimerToggle}/>
             <About/>
-            <ProductSlider collections={patterns}/>
-            <ProductSlider collections={lands}/>
-            <ProductSlider collections={geniuses}/>
+            {
+                collections.map(collection => {
+                    return (
+                        <ProductSlider collection={collection} userDeviceScreenSize={userDeviceScreenSize}/>
+                    )
+                })
+            }
+
             <ContactUs setContactToggle={setContactToggle} backgroundPageScrollOff={backgroundPageScrollOff}/>
             <Footer/>
             {

@@ -1,3 +1,1 @@
-import {ProductPageMobileSlider} from './ProductPageMobileSlider';
-
-export default ProductPageMobileSlider;
+export { default } from './ProductPageMobileSlider';

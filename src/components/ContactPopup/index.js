@@ -1,3 +1,1 @@
-import {ContactPopup} from "./ContactPopup";
-
-export default ContactPopup
+export { default } from './ContactPopup';

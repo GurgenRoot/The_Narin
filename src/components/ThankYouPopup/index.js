@@ -1,3 +1,1 @@
-import {ThankYouPopUp} from "./ThankYouPopUp";
-
-export default ThankYouPopUp
+export { default } from './ThankYouPopUp';

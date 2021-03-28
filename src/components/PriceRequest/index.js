@@ -1,3 +1,1 @@
-import {PriceRequest} from "./PriceRequest";
-
-export default PriceRequest
+export { default } from './PriceRequest';

@@ -1,1 +1,1 @@
-export { PortaledComponent as default } from './PortaledComponent';
+export { default } from './PortaledComponent';

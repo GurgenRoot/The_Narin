@@ -30,7 +30,10 @@ const ProductSlider = ({ collection, userDeviceScreenSize }) => {
         setTranslateX(() => translateX + 100);
         setMr(() => mr - margin);
       } else {
-        if ((sliderLength === 300 && userDeviceScreenSize > 980) || (sliderLength === 200 && userDeviceScreenSize < 980)) {
+        if ((
+          sliderLength === 300 && userDeviceScreenSize > 980)
+          || (sliderLength === 200 && userDeviceScreenSize < 980)
+        ) {
           return;
         }
         setSliderLength(() => sliderLength - 100);

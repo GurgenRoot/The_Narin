@@ -10,7 +10,7 @@ import ProductBuyInfo from './product_page_content/productBuyInfo';
 import Footer from '../../components/Footer/Footer';
 import PriceRequest from '../../components/PriceRequest/PriceRequest';
 import ExamplePhotoToggle from './product_page_content/ExamplePhotoToggle';
-import PortaledComponent from '../../components/PortaledComponent/PortaledComponent';
+import PortaledComponent from '../../components/PortaledComponent';
 
 import './productPage.scss';
 
@@ -61,7 +61,7 @@ const ProductPage = ({
 
   const params = useParams();
 
-  const collection = collections.filter(url => url.url === params.carouselUrl);
+  const collection = collections.filter(url => url.url === params.collectionUrl);
 
   const sliderId = collection[0].sliderItems[params.productId - 1].id;
 

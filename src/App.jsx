@@ -68,7 +68,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/:carouselUrl/:productId"
+            path="/:collectionUrl/:productId"
             render={() => (
               <Suspense fallback={() => <img src={Preloader} alt="...Loading" />}>
                 <ProductPage

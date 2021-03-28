@@ -1,7 +1,7 @@
 import products from './products';
 
 export default [{
-  url: 'armenianPatterns',
+  url: 'armenian-patterns',
   sliderTitle: 'PATTERNS',
   seasonName: '“Sebastia Gospel”',
   sliderDescription: '"Lesser Armenia"',
@@ -26,7 +26,7 @@ export default [{
     products[11]
   ]
 }, {
-  url: 'armenianLands',
+  url: 'armenian-lands',
   sliderTitle: 'LANDS',
   seasonName: '“Winding path”',
   sliderDescription: '"Lesser Armenia"',
@@ -51,7 +51,7 @@ export default [{
     products[22]
   ]
 }, {
-  url: 'armenianGeniuses',
+  url: 'armenian-geniuses',
   sliderTitle: 'GENIUSES',
   seasonName: '“Eastern moments”',
   sliderDescription: '"Lesser Armenia"',

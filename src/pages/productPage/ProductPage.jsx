@@ -61,7 +61,7 @@ const ProductPage = ({
 
   const params = useParams();
 
-  const collection = collections.filter(url => url.url === params.carouselUrl);
+  const collection = collections.filter(url => url.url === params.collectionUrl);
 
   const sliderId = collection[0].sliderItems[params.productId - 1].id;
 

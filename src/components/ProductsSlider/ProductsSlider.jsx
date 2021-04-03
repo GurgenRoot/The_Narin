@@ -16,29 +16,59 @@ const ProductSlider = ({ collection, userDeviceScreenSize }) => {
 
   const sliderImages = collection.sliderItems;
 
+  const desktop = userDeviceScreenSize - 668;
+
+  const mobile = userDeviceScreenSize - 323;
+
+  const sz = userDeviceScreenSize > 668 ? desktop : mobile;
+  const percent = sz / 307;
+
+  const totalPercent = percent * 100;
+
+  const tP = 100 - totalPercent;
+
   const sliderLengthValue = collection.sliderItems.length;
 
   const [sliderLength, setSliderLength] = useState(sliderLengthValue * 100);
 
   const handleSwipeLeft = () => {
-    console.log(sliderLength);
-    if (userDeviceScreenSize < 1280) {
-      if (sliderLength <= 100) { return; }
-
+    if (userDeviceScreenSize < 668) {
       if (sliderLength === 200) {
-        setSliderLength(() => sliderLength - 100);
-        setTranslateX(() => translateX + 100);
-        setMr(() => mr - margin);
+        setSliderLength(() => sliderLength - tP);
+        setTranslateX(() => translateX + tP);
+        setMr(() => mr - margin * 2);
       } else {
         if ((
-          sliderLength === 300 && userDeviceScreenSize > 980)
-          || (sliderLength === 200 && userDeviceScreenSize < 980)
+          sliderLength === 100 && userDeviceScreenSize > 980)
+          || (sliderLength < 200 && userDeviceScreenSize < 980)
         ) {
           return;
         }
         setSliderLength(() => sliderLength - 100);
         setTranslateX(() => translateX + 100);
         setMr(() => mr - margin);
+      }
+    }
+
+    if (userDeviceScreenSize < 975) {
+      if (sliderLength <= 100) { return; }
+
+      if (userDeviceScreenSize > 668) {
+        if (sliderLength === 300) {
+          setSliderLength(() => sliderLength - tP);
+          setTranslateX(() => translateX + tP);
+          setMr(() => mr - margin);
+        } else {
+          if ((
+            sliderLength === 100 && userDeviceScreenSize > 980)
+            || (sliderLength < 300 && userDeviceScreenSize < 980)
+          ) {
+            return;
+          }
+          setSliderLength(() => sliderLength - 200);
+          setTranslateX(() => translateX + 200);
+          setMr(() => mr - margin * 2);
+        }
       }
     } else {
       if (sliderLength === 300) { return; }
@@ -58,25 +88,41 @@ const ProductSlider = ({ collection, userDeviceScreenSize }) => {
   };
 
   const handleSwipeRight = () => {
-    console.log(sliderLength);
-
-    if (userDeviceScreenSize < 1280) {
-      if (sliderLength > 1000) { return; }
-      console.log(sliderLength);
-      setSliderLength(() => sliderLength + 200);
-      setTranslateX(() => translateX - 200);
-      setMr(() => mr + margin);
-    } else {
-      if (sliderLength > 1000) { return; }
-      if (sliderLength < 900) {
-        setSliderLength(() => sliderLength + 300);
-        setTranslateX(() => translateX - 300);
-        setMr(() => mr + margin * 3);
+    if (sliderLength >= 1100) { return; }
+    if (userDeviceScreenSize < 668) {
+      if (sliderLength < 200) {
+        setSliderLength(() => sliderLength + tP);
+        setTranslateX(() => translateX - tP);
+        setMr(() => mr + margin * 2);
+      } else {
+        setSliderLength(() => sliderLength + 100);
+        setTranslateX(() => translateX - 100);
+        setMr(() => mr + margin);
       }
-      if (sliderLength >= 900) {
+    }
+
+    if (userDeviceScreenSize < 975) {
+      if (userDeviceScreenSize > 668) {
+        if (sliderLength < 300) {
+          setSliderLength(() => sliderLength + tP);
+          setTranslateX(() => translateX - tP);
+          setMr(() => mr + margin);
+        } else {
+          setSliderLength(() => sliderLength + 200);
+          setTranslateX(() => translateX - 200);
+          setMr(() => mr + margin * 2);
+        }
+      }
+    } else {
+      if (sliderLength === 900) {
         setSliderLength(() => sliderLength + 200);
         setTranslateX(() => translateX - 200);
         setMr(() => mr + margin * 2);
+      }
+      if (sliderLength !== 900) {
+        setSliderLength(() => sliderLength + 300);
+        setTranslateX(() => translateX - 300);
+        setMr(() => mr + margin * 3);
       }
     }
   };

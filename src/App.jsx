@@ -8,11 +8,11 @@ import TestSlider from './components/TestSlider';
 import Preloader from './assets/preloader.svg';
 
 const App = () => {
-  const [userDeviceScreenSize, setUserDeviceScreenSize] = useState(window.screen.width);
+  const [userDeviceScreenSize, setUserDeviceScreenSize] = useState(window.innerWidth);
 
   useEffect(() => {
     const onResizeHandler = () => {
-      setUserDeviceScreenSize(window.screen.width);
+      setUserDeviceScreenSize(window.innerWidth);
     };
     window.addEventListener('resize', onResizeHandler);
 

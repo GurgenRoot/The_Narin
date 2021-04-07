@@ -6,7 +6,10 @@
   &__small {
     min-width: 100%;
     img {
-
+      min-height: 373px;
+      @media screen and (min-width: 910px){
+        min-height: 475px;
+      }
       @include xl {
         min-height: 725px;
       }

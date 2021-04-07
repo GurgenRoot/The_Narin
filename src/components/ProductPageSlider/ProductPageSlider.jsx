@@ -1,4 +1,4 @@
-import ProductPageDesktopSlider from '../ProductPageDesktopSlider/ProductPageDesktopSlider';
+import ProductPageDesktopSlider from '../ProductPageDesktopSlider';
 import ProductPageMobileSlider from '../ProductPageMobileSlider';
 
 import './ProductPageSlider.scss';
@@ -25,6 +25,9 @@ const ProductPageSlider = ({
       />
       : <ProductPageMobileSlider
           middleImage={middleImage}
+          smallImages={smallImages}
+          imageId={imageId}
+          setImageId={setImageId}
           setImageIdIncrementHandler={setImageIdIncrementHandler}
           setImageIdDecrementHandler={setImageIdDecrementHandler}
       />}

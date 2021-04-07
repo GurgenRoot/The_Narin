@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
+import TestSlider from './components/TestSlider';
 
 import Preloader from './assets/preloader.svg';
 
@@ -55,7 +56,7 @@ const App = () => {
       <div className="container">
         <Switch>
           <Route
-            path={'/'}
+            path="/"
             exact
             render={() => (
               <HomePage

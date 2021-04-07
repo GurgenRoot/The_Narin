@@ -17,7 +17,7 @@ const ProductPageDesktopSlider = ({
   setImageIdDecrementHandler
 }) => (
   <>
-    <div>
+    <div className="slider-miniImages">
       {smallImages.map((img, index) => (
         <div
           role="presentation"
@@ -28,7 +28,6 @@ const ProductPageDesktopSlider = ({
         >
         </div>
       ))}
-
     </div>
     <div className="product-page-slider">
       <div>

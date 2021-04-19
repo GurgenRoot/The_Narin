@@ -11,8 +11,7 @@ const About: React.FC = () => {
   const userDeviceScreenSize: number = window.screen.width;
   const [currentTargetBlock, setCurrentTargetBlock] = useState([]);
 
-  // @ts-ignore
-  const isExistsId = (itemId: string): boolean => currentTargetBlock.includes(itemId);
+  const isExistsId = (itemId: never): boolean => currentTargetBlock.includes(itemId);
 
   return (
     <section className="about">

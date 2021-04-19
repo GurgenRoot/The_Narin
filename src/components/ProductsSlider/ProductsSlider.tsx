@@ -7,7 +7,7 @@ import rightArrow from '../../assets/Mini Imgs/right-arrow.svg';
 import leftArrow from '../../assets/Mini Imgs/left-arrow.svg';
 
 import './productsSlider.scss';
-import { CollectionsType, ProductsTypes } from '../../types/types';
+import { CollectionsType, ProductsItemType } from '../../types/types';
 
 interface TProductSliderProps {
   collection: CollectionsType,
@@ -20,7 +20,7 @@ const ProductSlider: FC<TProductSliderProps> = ({ collection, userDeviceScreenSi
 
   const margin: number = userDeviceScreenSize > 1280 ? 32 : 18;
 
-  const sliderImages: Array<ProductsTypes> = collection.sliderItems;
+  const sliderImages: ProductsItemType[] = collection.sliderItems;
 
   const desktop: number = userDeviceScreenSize - 668;
 
@@ -33,7 +33,7 @@ const ProductSlider: FC<TProductSliderProps> = ({ collection, userDeviceScreenSi
 
   const tP: number = 100 - totalPercent;
 
-  const sliderLengthValue: number = collection.sliderItems.length;
+  const sliderLengthValue: number = Object.keys(collection.sliderItems).length;
 
   const [sliderLength, setSliderLength] = useState(sliderLengthValue * 100);
 
@@ -166,7 +166,7 @@ const ProductSlider: FC<TProductSliderProps> = ({ collection, userDeviceScreenSi
 
           </div>
           <div className="product-slider__wrap">
-            {sliderImages.map((item: ProductsTypes) => (
+            {sliderImages.map((item) => (
               <Hammer
                 // @ts-ignore
                 onSwipeLeft={() => {
@@ -181,14 +181,12 @@ const ProductSlider: FC<TProductSliderProps> = ({ collection, userDeviceScreenSi
 
                   <NavLink
                     to={`/${collection.url}/${item.id}`}
-                    // @ts-ignore
-                    aria-label={collection.id}
+                    aria-label={`${collection.id}`}
                   >
                     <div
                       style={{ transform: `translateX(calc(${-translateX}% + ${mr}px))` }}
                       className={classnames('product-slider__content')}
-                      // @ts-ignore
-                      id={item.id}
+                      id={`${item.id}`}
                     >
                       <img
                         src={item.img[0]}
@@ -205,7 +203,6 @@ const ProductSlider: FC<TProductSliderProps> = ({ collection, userDeviceScreenSi
                       </div>
                     </div>
                   </NavLink>
-
                 </div>
               </Hammer>
             ))}

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -26,7 +26,7 @@ const Header: FC<THeaderProps> = ({ isLogoWhite, setIsLogoWhite }) => {
 
   const isDesktopSize: boolean = userMonitorAvailWidth > 1024;
 
-  const isLogoWhiteHandler = () => {
+  const isLogoWhiteHandler = (): string => {
     if (isDesktopSize) {
       return isLogoWhite ? desktopWhiteLogo : desktopBlackLogo;
     }

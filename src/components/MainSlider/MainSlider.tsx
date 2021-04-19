@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, FC, useCallback } from 'react';
 import Hammer from 'react-hammerjs';
 import cn from 'classnames';
 
@@ -19,14 +19,15 @@ export interface TSliderImages {
   id: number,
   img: string,
 }
-const MainSlider: FC<TMainSliderProps> = React.memo(({ userDeviceScreenSize }) => {
-  const sliderImages = [
-    { id: 0, img: Img1 },
-    { id: 1, img: Img2 },
-    { id: 2, img: Img3 },
-    { id: 3, img: Img4 },
-  ] as Array<TSliderImages>;
 
+const sliderImages: TSliderImages[] = [
+  { id: 0, img: Img1 },
+  { id: 1, img: Img2 },
+  { id: 2, img: Img3 },
+  { id: 3, img: Img4 },
+];
+
+const MainSlider: FC<TMainSliderProps> = React.memo(({ userDeviceScreenSize }) => {
   const [currentImageId, setCurrentImageId] = useState(0);
   const [initialView, setInitialView] = useState(true);
   const [imageInTimerId, setImageInTimerId] = useState(0);
@@ -39,16 +40,16 @@ const MainSlider: FC<TMainSliderProps> = React.memo(({ userDeviceScreenSize }) =
     setCurrentImageId(id);
   };
 
-  const nextSlide = () => {
-    // @ts-ignore
-    sliderImages.push(sliderImages.shift());
+  const nextSlide = useCallback(() => {
+    sliderImages.push(sliderImages.shift() as TSliderImages);
     if (initialView) {
       setInitialView(false);
     }
     if (currentImageId + 2 > sliderImages.length) {
       return setCurrentImageId(0);
-    } return setCurrentImageId(currentImageId + 1);
-  };
+    }
+    return setCurrentImageId(currentImageId + 1);
+  }, [currentImageId, initialView]);
 
   const prevSlide = () => {
     if (initialView) {
@@ -66,14 +67,21 @@ const MainSlider: FC<TMainSliderProps> = React.memo(({ userDeviceScreenSize }) =
         nextSlide();
       }, 10000);
     }
-  }, [imageInTimerId]);
+  }, [imageInTimerId, nextSlide, timerToggle, userDeviceScreenSize]);
+
+  const swipe = (evn: { deltaX: number; }) => {
+    if (evn.deltaX < 0) {
+      prevSlide();
+    } else {
+      nextSlide();
+    }
+  };
+
   return (
     <div className="main-slider">
       {sliderImages.map((i: TSliderImages, index: number) => (
         <Hammer
-          // @ts-ignore
-          onSwipeLeft={() => nextSlide()}
-          onSwipeRight={() => prevSlide()}
+          onSwipe={swipe}
           key={i.id}
         >
           <div

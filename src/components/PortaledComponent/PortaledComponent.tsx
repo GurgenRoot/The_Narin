@@ -1,10 +1,13 @@
-import { FC } from 'react';
+import { FC, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
 
-interface TPortaledComponentProps {
-  modal: any
+type TPortaledComponentProps = {
+  modal: ReactElement;
 }
-// @ts-ignore
-const PortaledComponent: FC<TPortaledComponentProps> = ({ modal }) => createPortal(modal, document.querySelector('#portal'));
+
+const PortaledComponent: FC<TPortaledComponentProps> = ({ modal }) => {
+  const portalElement = document.querySelector('#portal');
+  return (portalElement && createPortal(modal, portalElement)) || null;
+};
 
 export default PortaledComponent;

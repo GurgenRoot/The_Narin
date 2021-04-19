@@ -3,7 +3,7 @@ import MelodiesOfTheLegacy from '../assets/Archived Season/melodies-of-the-legac
 import TheLastBastion from '../assets/Archived Season/the-last-bastion-1.jpg';
 import { ProductsTypes } from '../types/types';
 
-export default {
+const products: ProductsTypes = {
   1: {
     id: 1,
     name: 'Yervanduni coat of arms',
@@ -12,7 +12,7 @@ export default {
     smallImages: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
     middleImages: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
     largeImages: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
-  } as ProductsTypes,
+  },
   2: {
     id: 2,
     name: 'Byzantine 6th Century',
@@ -302,3 +302,5 @@ export default {
     largeImages: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
   },
 };
+
+export default products;

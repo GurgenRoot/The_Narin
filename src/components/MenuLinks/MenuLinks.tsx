@@ -3,7 +3,6 @@ import './menu.scss';
 
 interface TMenuLinksProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>{
   isLogoWhite: boolean,
-  href?: string
 }
 
 const MenuLinks: FC<TMenuLinksProps> = ({ isLogoWhite }) => (

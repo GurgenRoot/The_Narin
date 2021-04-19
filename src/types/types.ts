@@ -1,11 +1,15 @@
-export interface ProductsTypes {
-  id: number,
-  name: string,
-  img: Array<string>,
-  url: string,
-  smallImages: Array<string>,
-  middleImages: Array<string>,
-  largeImages: Array<string>
+export type ProductsItemType = {
+  id: number;
+  name: string;
+  img: string[];
+  url: string;
+  smallImages: string[]
+  middleImages: string[];
+  largeImages: string[];
+}
+
+export type ProductsTypes = {
+  [key: number]: ProductsItemType;
 }
 
 export interface CollectionsType {
@@ -15,5 +19,5 @@ export interface CollectionsType {
   sliderDescription: string,
   id: number,
   text: string,
-  sliderItems: Array<ProductsTypes>
+  sliderItems: ProductsItemType[]
 }

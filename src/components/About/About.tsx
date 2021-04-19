@@ -9,9 +9,9 @@ import './about.scss';
 
 const About: React.FC = () => {
   const userDeviceScreenSize: number = window.screen.width;
-  const [currentTargetBlock, setCurrentTargetBlock] = useState([]);
+  const [currentTargetBlock, setCurrentTargetBlock] = useState<string[]>([]);
 
-  const isExistsId = (itemId: never): boolean => currentTargetBlock.includes(itemId);
+  const isExistsId = (itemId: string): boolean => currentTargetBlock.includes(itemId);
 
   return (
     <section className="about">
@@ -31,7 +31,7 @@ const About: React.FC = () => {
 }
             id={item.id}
             onClick={() => {
-              setCurrentTargetBlock((prevState: never[]): any => [
+              setCurrentTargetBlock((prevState: string[]): any => [
                 ...prevState, item.id]);
             }}
           >

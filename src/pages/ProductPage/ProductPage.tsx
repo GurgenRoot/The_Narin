@@ -57,7 +57,6 @@ const ProductPage: FC<ProductPageType> = ({
   const [imageId, setImageId] = useState(0);
 
   const setImageIdIncrementHandler = () => {
-    // @ts-ignore
     if (imageId >= products[sliderId].largeImages.length - 1) {
       setImageId(0);
     } else { setImageId(prevState => prevState + 1); }
@@ -65,14 +64,11 @@ const ProductPage: FC<ProductPageType> = ({
 
   const setImageIdDecrementHandler = () => {
     if (imageId <= 0) {
-      // @ts-ignore
       setImageId(products[sliderId].largeImages.length - 1);
     } else { setImageId(prevState => prevState - 1); }
   };
-  // @ts-ignore
-  const middleImage: any = products[sliderId].middleImages[imageId];
-  // @ts-ignore
-  const largeImage: any = products[sliderId].middleImages[imageId];
+  const middleImage: string = products[sliderId].middleImages[imageId];
+  const largeImage: string = products[sliderId].middleImages[imageId];
 
   return (
     <div className="container">
@@ -80,7 +76,6 @@ const ProductPage: FC<ProductPageType> = ({
       <div className="product-page">
         <div className="product-page__top">
           <ProductPageSlider
-            // @ts-ignore
             smallImages={products[sliderId].smallImages}
             middleImage={middleImage}
             largeImage={largeImage}
